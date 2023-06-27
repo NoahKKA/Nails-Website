@@ -4,7 +4,7 @@ import BgImg from "./nail.jpg";
 function MidImgLogo() {
     return (
         <body>
-            <div>
+            <div>//test
                 <img className="mx-auto" src={BgImg} alt="Logo" />;
             </div>
             
