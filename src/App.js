@@ -9,7 +9,7 @@ function App() {
                 <div>
                     <TopBar />
                 </div>
-                <div>
+                <div className="">
                     <MidImgLogo />
                 </div>
             </body>
