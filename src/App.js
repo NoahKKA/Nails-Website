@@ -2,6 +2,7 @@ import TopBar from "./pages/home-page/TopBar";
 import MidImgLogo from "./pages/home-page/logoWithBg";
 import InfoCards from "./pages/home-page/InfoCards";
 import Products from "./pages/home-page/Products";
+import Footer from "./componets/Footer";
 import "./App.css";
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
                     <MidImgLogo />
                     <InfoCards />
                     <Products />
+                    
                 </div>
+                <Footer />
             </body>
         </div>
     );

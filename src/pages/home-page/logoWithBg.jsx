@@ -1,4 +1,5 @@
 //Imports
+import { Box } from "react-bootstrap-icons";
 import BgImg from "../img/temp.jpg";
 
 //Function
@@ -12,6 +13,11 @@ function MidImgLogo() {
                     alt="Logo"
                 />
             </div>
+            {/* <form id='Appointment' method='get'>
+                <select id="session-type">
+                    <option value>Select Appointment Type</option>
+                </select>
+            </form> */}
         </body>
     );
 }
