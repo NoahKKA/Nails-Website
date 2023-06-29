@@ -1,6 +1,7 @@
 import TopBar from "./pages/home-page/TopBar";
 import MidImgLogo from "./pages/home-page/logoWithBg";
 import InfoCards from "./pages/home-page/InfoCards";
+import Products from "./pages/home-page/Products";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
                 <div className="max-w-7xl mx-auto ">
                     <MidImgLogo />
                     <InfoCards />
+                    <Products />
                 </div>
             </body>
         </div>
