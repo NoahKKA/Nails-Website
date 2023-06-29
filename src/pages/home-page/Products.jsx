@@ -1,13 +1,16 @@
 import Carousel from "react-bootstrap/Carousel";
-import CNail1 from "../img/Cnail1.jpg";
-import CNail2 from "../img/Cnail2.jpg";
-import Cnail3 from "../img/Cnail3.jpg";
+import cPro1 from "../img/cProduct1.jpg";
+import cPro2 from "../img/cProduct2.jpg";
+import cPro3 from "../img/cProduct3.jpg";
 
 function Products() {
     return (
-        <Carousel>
-            <Carousel.Item interval={1000}>
-                <img className="d-block w-100" src={CNail1} alt="First slide" />
+        <Carousel className=" py-10">
+            <Carousel.Item interval={2000} >
+                <img 
+                className="d-block max-h-[100%] max-w-[100%]" 
+                src={cPro1} 
+                alt="First slide" />
                 <Carousel.Caption>
                     <h3>First slide label</h3>
                     <p>
@@ -16,10 +19,10 @@ function Products() {
                     </p>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={500}>
+            <Carousel.Item interval={2000} >
                 <img
-                    className="d-block w-100"
-                    src={CNail2}
+                    className="d-block max-h-[100%] max-w-[100%]"
+                    src={cPro2}
                     alt="Second slide"
                 />
                 <Carousel.Caption>
@@ -29,8 +32,10 @@ function Products() {
                     </p>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
-                <img className="d-block w-100" src={Cnail3} alt="Third slide" />
+            <Carousel.Item interval={2000}>
+                <img className="d-block max-h-[100%] max-w-[100%]" 
+                src={cPro3} 
+                alt="Third slide" />
                 <Carousel.Caption>
                     <h3>Third slide label</h3>
                     <p>
