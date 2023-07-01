@@ -1,2 +1,14 @@
+import Cal1 from "../componets/Calendar";
+import Default from "./DefaultPage";
 
-import Cal1 from "../componets/Calander";
+
+export default function CalendarPage(){
+    return (
+        <div>
+            <Default>
+                <Cal1/>
+            </Default>
+        </div>
+        
+    )
+}
