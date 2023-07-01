@@ -10,9 +10,9 @@ function TopBar() {
   return (
     <div>
       <Navbar fixed="top" className="bg-cyan-500">
-        <Navbar.Brand href="#GlobalHomeBtn" className="px-4">
-          <img className="   max-w-[5%] " src={IconImg} alt="Logo" />
-        </Navbar.Brand>
+        <Link to='/' className="px-4">
+            <img className="max-w-[5%]" src={IconImg} alt="Logo" />
+        </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav.Link href="#DarkMode" className="px-2" target="_blank">

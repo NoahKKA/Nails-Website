@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import HomePage from "./pages/HomePage";
 import CalendarPage from "./pages/CalanderPage";
+import Error404Page from "./pages/Error404";
 
 function App() {
     return (
@@ -9,10 +10,9 @@ function App() {
             <Router>
                 <Routes>
                     <Route path='/' element={<HomePage/>}/>
-                </Routes>
-                <Routes>
                     <Route path='/Calendar' element={<CalendarPage/>}/>
-                </Routes>
+                    <Route path='*' element={<Error404Page/>}/>
+                </Routes>           
             </Router>
         </div>
     );
