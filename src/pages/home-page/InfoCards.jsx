@@ -9,7 +9,7 @@ import Acr from "../img/acrylicNail.jpg";
 function InfoCards() {
     return (
         <CardGroup className="max-w-1  py-5 ">
-            <Card className="max-w-1">
+            <Card className="max-w-1 mx-auto">
                 <img className="mx-auto max-w-1" src={Gel} alt="Logo" />
                 <Card.Body>
                     <Card.Title className="mx-auto">Gel Nails</Card.Title>
