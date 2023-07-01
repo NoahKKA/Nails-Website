@@ -16,7 +16,7 @@ app.listen(4005, () => {
     console.log("Server is running on port 4005")
 })
 
-// 404 Page, Haven't pushed anything yet
+// 404 Page
 app.get('*', (req, res) => {
     res.send('404')
   })
