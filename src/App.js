@@ -4,6 +4,7 @@ import InfoCards from "./pages/home-page/InfoCards";
 import Products from "./pages/home-page/Products";
 import Footer from "./pages/home-page/Footer";
 import Cal1 from "./componets/Calander";
+import Error404 from "./pages/Error404";
 import "./App.css";
 
 function App() {
