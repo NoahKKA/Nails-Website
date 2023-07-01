@@ -1,7 +1,7 @@
 //Imports
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Calendar, Cart4 } from "react-bootstrap-icons";
+import { Calendar, Cart4, Moon } from "react-bootstrap-icons";
 import IconImg from "../img/abby.png";
 
 //Function
@@ -14,6 +14,9 @@ function TopBar() {
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
+                    <Nav.Link href="#DarkMode" className="px-2" target="_blank">
+                        <Moon />
+                    </Nav.Link>
                     <Nav.Link href="#Shopping" className="px-2" target="_blank">
                         <Cart4 />
                     </Nav.Link>
