@@ -1,6 +1,6 @@
 import Nail404 from "../assets/images/nail-404-image.jpg" 
 
-function Error404() {
+function Error404Page() {
   return (
     <>
     <div>
@@ -12,4 +12,4 @@ function Error404() {
   )
 }
 
-export default Error404
+export default Error404Page

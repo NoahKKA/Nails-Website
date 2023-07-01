@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.App {
+.Home {
     background-color: pink;
+}
+
+.black-link {
+    color: black;
 }

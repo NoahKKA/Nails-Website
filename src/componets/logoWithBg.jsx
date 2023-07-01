@@ -1,6 +1,6 @@
 //Imports
 
-import BgImg from "../img/temp.jpg";
+import BgImg from "../assets/images/temp.jpg";
 
 //Function
 function MidImgLogo() {
