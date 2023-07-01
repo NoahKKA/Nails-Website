@@ -26,4 +26,3 @@ app.listen(4005, () => {
 app.get('*', (req, res) => {
     res.send('404')
   })
-
