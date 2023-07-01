@@ -1,3 +1,48 @@
+# Nails Scheduling Website
+
+This website is designed to help customers schedule appointments for nail services.
+
+# Features
+
+Appointment Scheduling: Customers can browse available time slots and schedule appointments for nail services.
+Service Selection: Customers can choose from a variety of nail services offered by the salon.
+Notifications: Automated email notifications are sent to customers to confirm their appointments.
+
+
+# Technologies Used
+
+React: JavaScript library for building the user interface.
+Node.js: Backend runtime environment.
+Express: Web application framework for Node.js.
+SQL: Database to store user data and appointments.
+SendGrid: Email delivery service for sending appointment confirmations.
+
+
+# Installation
+
+Clone the repository:
+
+
+Browse available nail services and select the desired service.
+Choose an available time slot for your appointment.
+Receive a confirmation email with the appointment details.
+
+
+# Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+
+# License
+This project is licensed under the MIT License.
+
+
+# Acknowledgments
+This project was inspired by the need for an efficient and user-friendly nails scheduling system.
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
