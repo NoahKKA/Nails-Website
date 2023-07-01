@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 .Home {
     background-color: pink;
 }
 
 .black-link {
     color: black;
+=======
+.App {
+    background-color: whitesmoke;
+>>>>>>> 0de3e0b3ff5b468edc1b72008303c6cb35720bba
 }
