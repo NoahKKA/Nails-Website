@@ -2,6 +2,7 @@ import TopBar from "./pages/home-page/TopBar";
 import MidImgLogo from "./pages/home-page/logoWithBg";
 import InfoCards from "./pages/home-page/InfoCards";
 import Products from "./pages/home-page/Products";
+import Cal1 from "./componets/Calander";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                     <TopBar />
                 </div>
                 <div className="max-w-7xl mx-auto ">
+                    <Cal1 />
                     <MidImgLogo />
                     <InfoCards />
                     <Products />
@@ -21,4 +23,4 @@ function App() {
     );
 }
 
-
+export default App;
