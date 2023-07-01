@@ -14,7 +14,7 @@ function Footer() {
                         <ul class="flex space-x-4">
                             <li>
                                 <a
-                                    href="#"
+                                    href="https://www.instagram.com/grrr_abby/"
                                     class="text-gray-300 hover:text-white"
                                 >
                                     <Instagram />
