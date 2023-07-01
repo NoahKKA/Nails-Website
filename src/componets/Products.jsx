@@ -1,7 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
-import cPro1 from "../img/cProduct1.jpg";
-import cPro2 from "../img/cProduct2.jpg";
-import cPro3 from "../img/cProduct3.jpg";
+import cPro1 from "../assets/images/cProduct1.jpg";
+import cPro2 from "../assets/images/cProduct2.jpg";
+import cPro3 from "../assets/images/cProduct3.jpg";
 
 function Products() {
     return (
