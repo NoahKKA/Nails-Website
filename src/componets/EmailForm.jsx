@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { createClient } from "@supabase/supabase-js"
+import { supabase } from "../SupaBaseClient";
 
 export default function EmailForm() {
+  const fetchData = async () => {
+    try {
+      const { data, error } = await supabase.from('appointments').select('*');
+      if (error) {
+        console.log('Error fetching data:', error.message);
+      } else {
+        console.log('Fetched data:', data);
+      }
+    } catch (err) {
+      console.log('Error occurred during data fetching:', err);
+    }
+  };
   
-  const supabase = createClient(process.env.REACT_APP_DB_URL, process.env.REACT_APP_DB_API)
-
   const [appointmentFormData, setAppointmentFormData] = useState({
     name: '',
     date: '',
@@ -13,8 +23,8 @@ export default function EmailForm() {
     priceEstimate: 0,
   })
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const createAppointment = async(e) => {
+    e.preventDefault()
 
     try {
         const {data, error} = await supabase
@@ -22,29 +32,20 @@ export default function EmailForm() {
             .insert([appointmentFormData])
 
         if(error) {
-            console.log('Form Submitted Unsuccefully!', error.message)
+            throw error
         } else {
             console.log("Form Submisson Succesfull.", data)
+            fetchData()
         }
     } catch(err) {
         console.log("Error occurred during form submission", err)
     }
   }
 
-  const handleChange = (event) => {
-    const { name, value, type, priceEstimate } = event.target;
-    const newValue = type === 'number' ? +value : value;
-
-    setAppointmentFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: newValue,
-    }));
-  };
-
 
   return (
       <div>
-        <form action={handleSubmit} className="container mt-12">
+        <form className="container mt-12">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name:
@@ -54,8 +55,12 @@ export default function EmailForm() {
               id="name"
               name="name"
               className="form-control"
-              value={appointmentFormData.name}
-              onChange={handleChange}
+              placeholder="Enter Name"
+              onChange={(e) => setAppointmentFormData(prevFormData => ({
+                ...prevFormData,
+                name: e.target.value
+                }))
+              }              
               required
             />
           </div>
@@ -69,8 +74,14 @@ export default function EmailForm() {
               id="date"
               name="date"
               className="form-control"
-              value={appointmentFormData.date}
-              onChange={handleChange}
+              placeholder="YYYY/MM/DD"
+              onChange={(e) => {
+                const formattedDate = new Date(e.target.value).toISOString().split('T')[0];
+                setAppointmentFormData(prevFormData => ({
+                  ...prevFormData,
+                  date: formattedDate
+                }));
+              }}   
               required
             />
           </div>
@@ -84,8 +95,12 @@ export default function EmailForm() {
               id="start-time"
               name="startTime"
               className="form-control"
-              value={appointmentFormData.startTime}
-              onChange={handleChange}
+              placeholder="00:00"
+              onChange={(e) => setAppointmentFormData(prevFormData => ({
+                ...prevFormData,
+                startTime: e.target.value
+                }))
+              }     
               step='60'
               required
             />
@@ -100,8 +115,12 @@ export default function EmailForm() {
               id="end-time"
               name="endTime"
               className="form-control"
-              value={appointmentFormData.endTime}
-              onChange={handleChange}
+              placeholder="00:00"
+              onChange={(e) => setAppointmentFormData(prevFormData => ({
+                ...prevFormData,
+                endTime: e.target.value
+                }))
+              }     
               step='60'
               required
             />
@@ -116,12 +135,16 @@ export default function EmailForm() {
               id="priceEstimate"
               name="priceEstimate"
               className="form-control"
-              value={appointmentFormData.checkbox}
-              onChange={handleChange}
+              placeholder="accesories"
+              onChange={(e) => setAppointmentFormData(prevFormData => ({
+                ...prevFormData,
+                priceEstimate: e.target.value
+                }))
+              }     
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={(e) => createAppointment(e)}>
             Submit
           </button>
         </form>
