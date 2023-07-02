@@ -82,6 +82,7 @@ export default function EmailForm() {
 
   return (
     <div>
+      <h2 style={{ fontFamily: 'Cormorant Upright serif', fontWeight: 'bolder' }}>Schedule an Appointment</h2>
       <form className="container mt-12">
         <div className="mb-3">
           <label htmlFor="name" className="form-label">

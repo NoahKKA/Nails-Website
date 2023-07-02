@@ -30,7 +30,6 @@ function Cal1() {
     async function fetchAppointments(){
         try {
             const { data, error } = await supabase.from("appointments").select("*");
-            console.log(data)
             if (error) {
               throw error;
             }
@@ -39,7 +38,8 @@ function Cal1() {
               return {
                 title: appointment.name + " Nail's Appointment",
                 start: new Date(appointment.date + " " + appointment.startTime),
-                end: new Date(appointment.date + " " + appointment.endTime)
+                end: new Date(appointment.date + " " + appointment.endTime),
+                id: appointment.appointmentId
               };
             });
       
@@ -49,11 +49,18 @@ function Cal1() {
           }
     }
 
+    const handleEventClick = (e) => {
+        console.log(e)
+        const { id } = e
+        const url = `/appointments/${id}`
+        window.location.href = url
+    }
+
     return (
         <div className="App">
             <h1>Calendar</h1>
             <h2>Calendar</h2>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
+            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} onSelectEvent={handleEventClick}/>
         </div>
     );
 }
