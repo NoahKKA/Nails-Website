@@ -55,6 +55,7 @@ export default function EmailForm() {
               id="name"
               name="name"
               className="form-control"
+              placeholder="Enter Name"
               onChange={(e) => setAppointmentFormData(prevFormData => ({
                 ...prevFormData,
                 name: e.target.value
@@ -73,6 +74,7 @@ export default function EmailForm() {
               id="date"
               name="date"
               className="form-control"
+              placeholder="YYYY/MM/DD"
               onChange={(e) => {
                 const formattedDate = new Date(e.target.value).toISOString().split('T')[0];
                 setAppointmentFormData(prevFormData => ({
@@ -93,6 +95,7 @@ export default function EmailForm() {
               id="start-time"
               name="startTime"
               className="form-control"
+              placeholder="00:00"
               onChange={(e) => setAppointmentFormData(prevFormData => ({
                 ...prevFormData,
                 startTime: e.target.value
@@ -112,6 +115,7 @@ export default function EmailForm() {
               id="end-time"
               name="endTime"
               className="form-control"
+              placeholder="00:00"
               onChange={(e) => setAppointmentFormData(prevFormData => ({
                 ...prevFormData,
                 endTime: e.target.value
@@ -131,6 +135,7 @@ export default function EmailForm() {
               id="priceEstimate"
               name="priceEstimate"
               className="form-control"
+              placeholder="accesories"
               onChange={(e) => setAppointmentFormData(prevFormData => ({
                 ...prevFormData,
                 priceEstimate: e.target.value
