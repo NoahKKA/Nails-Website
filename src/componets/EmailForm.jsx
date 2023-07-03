@@ -42,15 +42,15 @@ export default function EmailForm() {
 
   const handleAccessoryChange = (e, accessoryId) => {
     const isChecked = e.target.checked;
-
+  
     // Find the accessory with the matching ID
     const selectedAccessory = accessories.find(
       (accessory) => accessory.accesories_id === accessoryId
     );
-
+  
     if (selectedAccessory) {
       const accessoryPrice = parseFloat(selectedAccessory.price);
-
+  
       setAccessories((prevAccessories) =>
         prevAccessories.map((accessory) =>
           accessory.accesories_id === accessoryId
@@ -62,7 +62,7 @@ export default function EmailForm() {
             : accessory
         )
       );
-
+  
       setPriceEstimate((prevPriceEstimate) => {
         if (isChecked) {
           const quantity = selectedAccessory.quantity || 0;
@@ -80,7 +80,8 @@ export default function EmailForm() {
       });
     }
   };
-
+  
+  
   const handleQuantityChange = (e, accessoryId) => {
     const quantity =
       e.target.value.trim() === "" ? 0 : parseInt(e.target.value);
@@ -148,23 +149,28 @@ export default function EmailForm() {
 
   const createAppointment = async (e) => {
     e.preventDefault();
-
+  
     try {
+      const updatedAppointmentFormData = {
+        ...appointmentFormData,
+        priceEstimate: priceEstimate,
+      };
+  
       const { data, error } = await supabase
         .from("appointments")
-        .insert([appointmentFormData]);
-
+        .insert([updatedAppointmentFormData]);
+  
       if (error) {
         throw error;
       } else {
-        console.log("Form Submisson Succesfull.", data);
+        console.log("Form Submission Successful.", data);
         window.location.reload();
       }
     } catch (err) {
       console.log("Error occurred during form submission", err);
     }
   };
-
+  
   return (
     <div>
       <h2
