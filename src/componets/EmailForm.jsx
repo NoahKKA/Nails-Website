@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../SupaBaseClient";
 
 const timeBlocks = [];
@@ -6,7 +6,11 @@ const startTime = new Date("1970/01/01 08:00").getTime();
 const endTime = new Date("1970/01/01 18:00").getTime();
 const hourMilliseconds = 60 * 30 * 1000;
 
-for (let timestamp = startTime; timestamp <= endTime; timestamp += hourMilliseconds) {
+for (
+  let timestamp = startTime;
+  timestamp <= endTime;
+  timestamp += hourMilliseconds
+) {
   const time = new Date(timestamp).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
@@ -14,16 +18,99 @@ for (let timestamp = startTime; timestamp <= endTime; timestamp += hourMilliseco
   timeBlocks.push({ label: time, value: time });
 }
 export default function EmailForm() {
-  const fetchData = async () => {
+  const [accessories, setAccessories] = useState([]);
+  const [priceEstimate, setPriceEstimate] = useState(60);
+
+  const fetchAccessoryData = async () => {
     try {
-      const { data, error } = await supabase.from("appointments").select("*");
+      const { data, error } = await supabase.from("accesories").select("*");
       if (error) {
-        console.log("Error fetching data:", error.message);
+        console.log("ERROR FETCHING ACCESORIES DATA", error.message);
       } else {
-        console.log("Fetched data:", data);
+        console.log("fetched accesorie data", data);
+        setAccessories(data);
       }
     } catch (err) {
-      console.log("Error occurred during data fetching:", err);
+      console.log(err);
+      throw err;
+    }
+  };
+
+  useEffect(() => {
+    fetchAccessoryData();
+  }, []);
+
+  const handleAccessoryChange = (e, accessoryId) => {
+    const isChecked = e.target.checked;
+
+    // Find the accessory with the matching ID
+    const selectedAccessory = accessories.find(
+      (accessory) => accessory.accesories_id === accessoryId
+    );
+
+    if (selectedAccessory) {
+      const accessoryPrice = parseFloat(selectedAccessory.price);
+
+      setAccessories((prevAccessories) =>
+        prevAccessories.map((accessory) =>
+          accessory.accesories_id === accessoryId
+            ? {
+                ...accessory,
+                checked: isChecked,
+                quantity: isChecked ? accessory.quantity : 0,
+              }
+            : accessory
+        )
+      );
+
+      setPriceEstimate((prevPriceEstimate) => {
+        if (isChecked) {
+          const quantity = selectedAccessory.quantity || 0;
+          const totalAccessoryPrice = selectedAccessory.isPerEach
+            ? accessoryPrice * quantity
+            : accessoryPrice;
+          return prevPriceEstimate + totalAccessoryPrice;
+        } else {
+          const quantity = selectedAccessory.quantity || 0;
+          const totalAccessoryPrice = selectedAccessory.isPerEach
+            ? accessoryPrice * quantity
+            : accessoryPrice;
+          return prevPriceEstimate - totalAccessoryPrice;
+        }
+      });
+    }
+  };
+
+  const handleQuantityChange = (e, accessoryId) => {
+    const quantity =
+      e.target.value.trim() === "" ? 0 : parseInt(e.target.value);
+
+    if (isNaN(quantity)) {
+      return;
+    }
+
+    const selectedAccessory = accessories.find(
+      (accessory) => accessory.accesories_id === accessoryId
+    );
+
+    if (selectedAccessory) {
+      const accessoryPrice = parseFloat(selectedAccessory.price);
+      const prevQuantity = selectedAccessory.quantity || 0;
+
+      setPriceEstimate((prevPriceEstimate) => {
+        const prevTotalPrice = prevQuantity * accessoryPrice;
+        const newTotalPrice = quantity * accessoryPrice;
+
+        return prevPriceEstimate - prevTotalPrice + newTotalPrice;
+      });
+
+      setAccessories((prevAccessories) =>
+        prevAccessories.map((accessory) =>
+          accessory.accesories_id === accessoryId
+            ? { ...accessory, quantity: quantity }
+            : accessory
+        )
+      );
     }
   };
 
@@ -48,7 +135,7 @@ export default function EmailForm() {
       endTime,
     }));
 
-    setDropdownVisible(false)
+    setDropdownVisible(false);
   };
 
   const [appointmentFormData, setAppointmentFormData] = useState({
@@ -63,7 +150,6 @@ export default function EmailForm() {
     e.preventDefault();
 
     try {
-
       const { data, error } = await supabase
         .from("appointments")
         .insert([appointmentFormData]);
@@ -72,7 +158,6 @@ export default function EmailForm() {
         throw error;
       } else {
         console.log("Form Submisson Succesfull.", data);
-        fetchData();
         window.location.reload();
       }
     } catch (err) {
@@ -82,7 +167,11 @@ export default function EmailForm() {
 
   return (
     <div>
-      <h2 style={{ fontFamily: 'Cormorant Upright serif', fontWeight: 'bolder' }}>Schedule an Appointment</h2>
+      <h2
+        style={{ fontFamily: "Cormorant Upright serif", fontWeight: "bolder" }}
+      >
+        Schedule an Appointment
+      </h2>
       <form className="container mt-12">
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -172,24 +261,38 @@ export default function EmailForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="priceEstimate" className="form-label">
-            Price Estimate:
-          </label>
-          <input
-            type="number"
-            id="priceEstimate"
-            name="priceEstimate"
-            className="form-control"
-            placeholder="accesories"
-            onChange={(e) =>
-              setAppointmentFormData((prevFormData) => ({
-                ...prevFormData,
-                priceEstimate: e.target.value,
-              }))
-            }
-          />
+        <div>
+          {accessories.map((accessory) => (
+            <div key={accessory.accesories_id} className="form-check">
+              <input
+                type="checkbox"
+                id={accessory.accesories_id}
+                name={accessory.name}
+                className="form-check-input"
+                onChange={(e) =>
+                  handleAccessoryChange(e, accessory.accesories_id)
+                }
+              />
+              <label htmlFor={accessory.id} className="form-check-label">
+                {accessory.name} = {accessory.price}
+              </label>
+              {accessory.isPerEach && (
+                <input
+                  type="number"
+                  id={`quantity_${accessory.accesories_id}`}
+                  name={`quantity_${accessory.accesories_id}`}
+                  className="form-control"
+                  placeholder="Quantity"
+                  disabled={!accessory.checked}
+                  onChange={(e) =>
+                    handleQuantityChange(e, accessory.accesories_id)
+                  }
+                />
+              )}
+            </div>
+          ))}
         </div>
+        <h2>Price Estimate ${priceEstimate}</h2>
 
         <button
           type="submit"
