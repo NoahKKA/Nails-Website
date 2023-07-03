@@ -1,18 +1,21 @@
-import TopBar from "./pages/home-page/TopBar";
-import MidImgLogo from "./pages/home-page/logoWithBg";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import HomePage from "./pages/HomePage";
+import CalendarPage from "./pages/CalanderPage";
+import Error404Page from "./pages/Error404";
+import EditPage from "./pages/EditPage";
 
 function App() {
     return (
         <div className="App">
-            <body>
-                <div>
-                    <TopBar />
-                </div>
-                <div>
-                    <MidImgLogo />
-                </div>
-            </body>
+            <Router>
+                <Routes>
+                    <Route path='/' element={<HomePage/>}/>
+                    <Route path='/Calendar' element={<CalendarPage/>}/>
+                    <Route path='appointments/:id' element={<EditPage/>}/>
+                    <Route path='*' element={<Error404Page/>}/>
+                </Routes>           
+            </Router>
         </div>
     );
 }

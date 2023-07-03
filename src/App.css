@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.Home {
+    background-color: pink;
+}
+
+.black-link {
+    color: black;
+}
