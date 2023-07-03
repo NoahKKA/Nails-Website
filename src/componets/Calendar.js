@@ -9,53 +9,72 @@ import "react-datepicker/dist/react-datepicker.css";
 import { supabase } from "../SupaBaseClient";
 
 const locales = {
-    "en-US": require("date-fns/locale/en-US"),
+  "en-US": require("date-fns/locale/en-US"),
 };
 const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
 });
 
-
 function Cal1() {
-    const [allEvents, setAllEvents] = useState([]);
+  const [allEvents, setAllEvents] = useState([]);
 
-    useEffect(() => {
-        fetchAppointments()
-    }, [])
+  useEffect(() => {
+    fetchAppointments();
+  }, []);
 
-    async function fetchAppointments(){
-        try {
-            const { data, error } = await supabase.from("appointments").select("*");
-            console.log(data)
-            if (error) {
-              throw error;
-            }
-      
-            const transformedAppointments = data.map(appointment => {
-              return {
-                title: appointment.name + " Nail's Appointment",
-                start: new Date(appointment.date + " " + appointment.startTime),
-                end: new Date(appointment.date + " " + appointment.endTime)
-              };
-            });
-      
-            setAllEvents(transformedAppointments);
-          } catch (error) {
-            console.error("Error fetching appointments:", error);
-          }
+  async function fetchAppointments() {
+    try {
+      const { data, error } = await supabase.from("appointments").select("*");
+      if (error) {
+        throw error;
+      }
+
+      const transformedAppointments = data.map((appointment) => {
+        return {
+          title: appointment.name + " Nail's Appointment",
+          start: new Date(appointment.date + " " + appointment.startTime),
+          end: new Date(appointment.date + " " + appointment.endTime),
+          id: appointment.appointmentId,
+        };
+      });
+
+      setAllEvents(transformedAppointments);
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
     }
+  }
 
-    return (
-        <div className="App">
-            <h1>Calendar</h1>
-            <h2>Calendar</h2>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
-        </div>
-    );
+  const handleEventClick = (e) => {
+    console.log(e);
+    const { id } = e;
+    const url = `/appointments/${id}`;
+    window.location.href = url;
+  };
+
+  return (
+    <div className="App">
+      <h1 className="mt-5">Calendar</h1>
+      <Calendar
+        localizer={localizer}
+        events={allEvents}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 500, margin: "50px" }}
+        onSelectEvent={handleEventClick}
+        views={{
+            month: true,
+            week: true,
+            day: true,
+            agenda: false,
+        }}
+        popup={true}
+      />
+    </div>
+  );
 }
 
 export default Cal1;

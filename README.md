@@ -40,8 +40,21 @@ This project is licensed under the MIT License.
 This project was inspired by the need for an efficient and user-friendly nails scheduling system.
 
 
+#CITATIONS
+* Code: Calendar
+* Author: NikValdez
+* Source: https://github.com/NikValdez/reactCalendarTut
 
+* Code: Template/SupaBase
+* Author: Axxion Tech
+* Source: https://www.youtube.com/watch?v=fBcqjYfVCdY&t=2290s
 
+* Code: 
+* Author: 
+* Source: 
+
+* Code: Every question I had about anything
+* Author: ChatGPT
 
 # Getting Started with Create React App
 
