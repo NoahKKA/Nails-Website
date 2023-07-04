@@ -48,14 +48,6 @@ function Cal1() {
     }
   }
 
-<<<<<<< HEAD
-    return (
-        <div className="App my-20 text-center">
-            <h2>Schedule an appointment</h2>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
-        </div>
-    );
-=======
   const handleEventClick = (e) => {
     console.log(e);
     const { id } = e;
@@ -83,7 +75,6 @@ function Cal1() {
       />
     </div>
   );
->>>>>>> 49286c94c65cf086fbddcf0eb1b8e70cc29b6fb5
 }
 
 export default Cal1;
