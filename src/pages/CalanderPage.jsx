@@ -1,14 +1,14 @@
 import Cal1 from "../componets/Calendar";
 import Default from "./DefaultPage";
 
-
-export default function CalendarPage(){
+export default function CalendarPage() {
     return (
         <div>
             <Default>
-                <Cal1/>
+                <div className="max-w-7xl mx-auto">
+                    <Cal1 />
+                </div>
             </Default>
         </div>
-        
-    )
+    );
 }

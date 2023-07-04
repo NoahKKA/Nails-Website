@@ -74,9 +74,8 @@ function Cal1() {
     }
 
     return (
-        <div className="App">
-            <h1>Calendar</h1>
-            <h2>Add New Event</h2>
+        <div className="App my-20 text-center">
+            <h2>Schedule an appointment</h2>
             <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
         </div>
     );

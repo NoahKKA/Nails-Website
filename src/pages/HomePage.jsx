@@ -9,7 +9,7 @@ export default function HomePage() {
         <Default>
             <div className="Home">
                 <body className="bg-rose-500">
-                    <div className="max-w-7xl mx-auto ">
+                    <div className="max-w-7xl mx-auto">
                         <MidImgLogo />
                         <InfoCards />
                         <Products />

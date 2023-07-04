@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
 function TopBar() {
   return (
     <div>
-      <Navbar fixed="top" className="bg-cyan-500">
-        <Navbar.Brand href="#GlobalHomeBtn" className="px-4">
-          <img className="   max-w-[5%] " src={IconImg} alt="Logo" />
-        </Navbar.Brand>
+      <Navbar fixed="top" className="bg-cyan-500 ">
+      <Link to='/' className="px-4">
+            <img className="max-w-[7%]" src={IconImg} alt="Logo" />
+        </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Nav.Link href="#DarkMode" className="px-2" target="_blank">
+          <Nav.Link href="#DarkMode" className="px-2" >
             <Moon />
           </Nav.Link>
           <Nav.Link href="#Shopping" className="px-2" target="_blank">

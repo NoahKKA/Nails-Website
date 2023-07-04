@@ -16,6 +16,7 @@ function Footer() {
                                 <a
                                     href="https://www.instagram.com/grrr_abby/"
                                     class="text-gray-300 hover:text-white"
+                                    target="_blank"
                                 >
                                     <Instagram />
                                 </a>
