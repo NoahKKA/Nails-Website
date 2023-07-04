@@ -36,7 +36,7 @@ function InfoCards() {
                     <ListGroup.Item>$1,000,000</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#Calender">Schedule</Card.Link>
+                    <Card.Link href="/Calendar">Schedule</Card.Link>
                 </Card.Body>
             </Card>
 
@@ -53,7 +53,7 @@ function InfoCards() {
                     <ListGroup.Item>$1,000,000</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#Calender">Schedule</Card.Link>
+                    <Card.Link href="/Calendar">Schedule</Card.Link>
                 </Card.Body>
             </Card>
         </CardGroup>
