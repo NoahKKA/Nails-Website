@@ -9,9 +9,15 @@ import { Link } from "react-router-dom";
 function TopBar() {
   return (
     <div>
+<<<<<<< HEAD
       <Navbar fixed="top" className="bg-cyan-500 ">
       <Link to='/' className="px-4">
             <img className="max-w-[7%]" src={IconImg} alt="Logo" />
+=======
+      <Navbar fixed="top" className="bg-cyan-500">
+        <Link to='/' className="px-4">
+            <img className="max-w-[5%]" src={IconImg} alt="Logo" />
+>>>>>>> 49286c94c65cf086fbddcf0eb1b8e70cc29b6fb5
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
