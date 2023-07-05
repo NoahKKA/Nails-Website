@@ -13,3 +13,8 @@
 .errorPage {
     background-color: aquamarine;
 }
+
+.errorimage {
+    text-align: center;
+    display: flex;
+}
