@@ -3,18 +3,5 @@
 @tailwind utilities;
 
 .Home {
-    background-color: pink;
-}
-
-.black-link {
-    color: black;
-}
-
-.errorPage {
-    background-color: aquamarine;
-}
-
-.errorimage {
-    text-align: center;
-    display: flex;
+    background-color: white;
 }
