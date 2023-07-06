@@ -3,11 +3,11 @@ import logo from "../assets/images/abby.png";
 
 function Footer() {
     return (
-        <footer class="bg-gray-900 text-white py-20">
+        <footer class="bg-gradient-to-r from-cyan-300 via-green-300 to-cyan-300 text-black py-20">
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap items-center justify-between">
                     <div class="w-full md:w-1/4 mb-4 md:mb-0">
-                        <img src={logo} alt="Company Logo" class="h-20" />
+                        <img  href="/" src={logo} alt="Company Logo" class="h-20" />
                     </div>
                     <div class="w-full md:w-1/4 mb-4 md:mb-0">
                         <h3 class="text-lg mb-2">Follow us on Instagram</h3>
@@ -15,7 +15,7 @@ function Footer() {
                             <li>
                                 <a
                                     href="https://www.instagram.com/grrr_abby/"
-                                    class="text-gray-300 hover:text-white"
+                                    class="text-black hover:text-white"
                                     target="_blank"
                                 >
                                     <Instagram />
@@ -24,7 +24,7 @@ function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    class="text-gray-300 hover:text-white"
+                                    class="text-black hover:text-white"
                                 >
                                     <Facebook />
                                 </a>

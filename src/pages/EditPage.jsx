@@ -6,6 +6,7 @@ import { supabase } from "../SupaBaseClient";
 function EditPage() {
   const { id } = useParams();
   const [appointment, setAppointment] = useState({});
+  const [accessories, setAccessories] = useState([]);
 
   const fetchAppointmentById = async () => {
     try {
@@ -20,11 +21,24 @@ function EditPage() {
         console.log("Fetched data:", data);
         setAppointment(data);
       }
+  
+      if (data && data.selectedAccessories && data.selectedAccessories.length > 0) {
+        const { data: accessoryData, error: accessoryError } = await supabase
+          .from("accesories")
+          .select("*")
+          .in("accesories_id", data.selectedAccessories);
+        if (accessoryError) {
+          console.log("Error fetching accessory data:", accessoryError.message);
+        } else {
+          console.log("Fetched accessory data:", accessoryData);
+          setAccessories(accessoryData);
+        }
+      }
     } catch (err) {
       console.log("Error occurred during data fetching:", err);
     }
   };
-
+  
   useEffect(() => {
     fetchAppointmentById();
   }, [id]);
@@ -60,6 +74,17 @@ function EditPage() {
           <p>
             <strong>Price Estimate:</strong> ${appointment.priceEstimate}
           </p>
+
+          {accessories.length > 0 && (
+            <div>
+              <h4>Selected Accessories:</h4>
+              <ul>
+                {accessories.map((accessory) => (
+                  <li key={accessory.accessoryId}>{accessory.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 
