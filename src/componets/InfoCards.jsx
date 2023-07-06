@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Gel from "../assets/images/GelNail.jpg";
 import Acr from "../assets/images/acrylicNail.jpg";
+import Chr from "../assets/images/CharmNails.jpg";
 
 //Function
 function InfoCards() {
@@ -41,7 +42,7 @@ function InfoCards() {
             </Card>
 
             <Card className="max-w-1">
-                <img className="mx-auto max-w-1" src={Gel} alt="Logo" />
+                <img className="mx-auto max-w-1" src={Chr} alt="Logo" />
                 <Card.Body>
                     <Card.Title className="mx-auto">Gel Nails</Card.Title>
                 </Card.Body>
