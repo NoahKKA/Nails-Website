@@ -16,7 +16,7 @@ import { Dropdown } from "react-bootstrap";
 function TopBar() {
   return (
     <div>
-      <Nav className="py-100 justify-content-between bg-slate-400">
+      <Nav className="py-100 justify-content-between bg-slate-400 fixed-top">
         <h2 style={{ marginLeft: "1rem" }}>
           <Nav.Link
             href="/"

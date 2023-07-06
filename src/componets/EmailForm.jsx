@@ -24,6 +24,7 @@ export default function EmailForm() {
   const [accessories, setAccessories] = useState([]);
   const [priceEstimate, setPriceEstimate] = useState(60);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isSubmitPressed, setIsSubmitPressed] = useState(false);
 
   //FETCHES DATA FROM ACCESSORIES TABLE
   const fetchAccessoryData = async () => {
@@ -155,16 +156,17 @@ export default function EmailForm() {
 
   //CREATES APPOINTMENT VARIABLES
   const [appointmentFormData, setAppointmentFormData] = useState({
-    name: "",
-    date: "",
-    startTime: "",
-    endTime: "",
-    priceEstimate: 0,
+    name: null,
+    date: null,
+    startTime: null,
+    endTime: null,
+    priceEstimate: null,
   });
 
   //HANDLES SUBMIT BUTTON
   const createAppointment = async (e) => {
     e.preventDefault();
+    setIsSubmitPressed(true);
 
     try {
       //INPUTS PRICEESTIMATE DURING FINAL ASSESMENT
@@ -204,7 +206,7 @@ export default function EmailForm() {
         <form className="container mt-5">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
-              Name:
+              Name: <span style={{ color: "red" }}> *</span>
             </label>
             <input
               type="text"
@@ -212,6 +214,10 @@ export default function EmailForm() {
               name="name"
               className="form-control"
               placeholder="Enter Name"
+              style={{
+                borderColor:
+                  !appointmentFormData.name && isSubmitPressed ? "red" : "",
+              }}
               onChange={(
                 e //SETS APPOINTMENTFORMDATA NAME TO INPUTED NAME
               ) =>
@@ -222,24 +228,25 @@ export default function EmailForm() {
               }
               required
             />
+            {isSubmitPressed && !appointmentFormData.name && (
+              <span style={{ color: "red" }}>Name is required</span>
+            )}
           </div>
 
           <div className="mb-3">
             <label htmlFor="date" className="form-label">
-              Date:
+              Date: <span style={{ color: "red" }}> *</span>
             </label>
             <div className="input-group">
               <DatePicker
                 selected={selectedDate}
                 onChange={(date) => {
                   setSelectedDate(date);
-                  let formattedDate = null;
+                  let formattedDate = null;  
                   if (date !== null) {
-                    //DOES NOT ALLOW EMPTY STRINGS TO BE INPUTED IN toISOString FUNCTION
-                    formattedDate = date.toISOString().split("T")[0];
+                    formattedDate = date.toISOString().split("T")[0];  //ONLY RUNS THE toISOString() WHEN A USER SELECTS A TIMEBLOCK
                   }
                   setAppointmentFormData((prevFormData) => ({
-                    //SETS APPOINTMENTFORMDATA NAME TO INPUTED DATE
                     ...prevFormData,
                     date: formattedDate,
                   }));
@@ -247,14 +254,22 @@ export default function EmailForm() {
                 className="form-control"
                 placeholderText="YYYY-MM-DD"
                 dateFormat="yyyy-MM-dd"
+                style={{
+                  borderColor:
+                    !appointmentFormData.date && isSubmitPressed ? "red" : "",
+                  width: "100%"
+                }}
                 required
               />
             </div>
+            {isSubmitPressed && !appointmentFormData.date && (
+              <span style={{ color: "red" }}>Date is required</span>
+            )}
           </div>
 
           <div className="mb-3">
             <label htmlFor="start-time" className="form-label">
-              Start Time:
+              Start Time: <span style={{ color: "red" }}> *</span>
             </label>
             <div
               className="form-control"
@@ -271,6 +286,10 @@ export default function EmailForm() {
                 onChange={handleStartTimeChange}
                 required
                 size={7}
+                style={{
+                  borderColor:
+                    !appointmentFormData.startTime && isSubmitPressed ? "red" : "",
+                }}
               >
                 {timeBlocks.map((block) => (
                   <option key={block.value} value={block.value}>
@@ -278,6 +297,9 @@ export default function EmailForm() {
                   </option>
                 ))}
               </select>
+            )}
+            {isSubmitPressed && !appointmentFormData.startTime && (
+              <span style={{ color: "red" }}>Start Time is required</span>
             )}
           </div>
 
