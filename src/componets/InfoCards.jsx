@@ -1,10 +1,12 @@
 //Imports
+import CardGroup from "react-bootstrap/CardGroup";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 import Gel from "../assets/images/GelNail.jpg";
 import Acr from "../assets/images/acrylicNail.jpg";
 import Chr from "../assets/images/CharmNails.jpg";
 import Chrome from "../assets/images/chrome nails.jpg";
 
-//Function
 function InfoCards() {
     return (
         <div>
@@ -94,5 +96,4 @@ function InfoCards() {
     );
 }
 
-//Export
 export default InfoCards;

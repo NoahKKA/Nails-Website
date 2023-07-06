@@ -4,10 +4,12 @@ import Navbar from "react-bootstrap/Nav";
 import {
   Calendar,
   Cart4,
-  MoonStars,
+  Sun,
   MoonStarsFill,
+  MoonStars,
   House,
-  QuestionCircle
+  QuestionCircle,
+  Moon
 } from "react-bootstrap-icons";
 import { Dropdown } from "react-bootstrap";
 
@@ -15,7 +17,9 @@ import { Dropdown } from "react-bootstrap";
 function TopBar() {
   return (
     <div>
-      <Navbar className="fixed-top max-  justify-content-between bg-gradient-to-r from-green-300 via-cyan-300 to-green-300">
+
+      <Navbar className="fixed-top py-100 justify-content-between bg-gradient-to-r from-green-300 via-cyan-300 to-green-300">
+
         <h2 style={{ marginLeft: "1rem" }}>
           <Nav.Link
             href="/"
@@ -58,11 +62,11 @@ function TopBar() {
                 data-placement="bottom"
                 title="DarkMode"
               >
-                <MoonStars />
+                <Moon />
               </Dropdown.Toggle>
               <Dropdown.Menu className="dropdown-menu-right">
                 <Dropdown.Item>
-                  <MoonStars />
+                  <Sun />
                   <span className="mt-2">Light Mode</span>
                 </Dropdown.Item>
                 <Dropdown.Item>
