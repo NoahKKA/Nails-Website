@@ -5,3 +5,29 @@
 .Home {
     background-color: white;
 }
+
+
+.custom-toggle {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    width:2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .custom-toggle:focus,
+  .custom-toggle:hover {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .custom-toggle svg {
+    margin-right: 0.5rem;
+  }
+  
+  .custom-toggle::after {
+    display: none !important;
+  }
+  

@@ -57,13 +57,13 @@ function Cal1() {
 
   return (
     <div className="App">
-      <h1 className="mt-5 text-center">Calendar</h1>
+      <h1 className="mt-5 text-center">See When We Free!</h1>
       <Calendar
         localizer={localizer}
         events={allEvents}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500, margin: "50px" }}
+        style={{ height: 700, margin: "10px" }}
         onSelectEvent={handleEventClick}
         views={{
             month: true,
