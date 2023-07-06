@@ -1,4 +1,3 @@
-//Imports
 import CardGroup from "react-bootstrap/CardGroup";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -6,7 +5,6 @@ import Gel from "../assets/images/GelNail.jpg";
 import Acr from "../assets/images/acrylicNail.jpg";
 import Chr from "../assets/images/CharmNails.jpg";
 
-//Function
 function InfoCards() {
     return (
         <CardGroup className="max-w-1  py-5 ">
@@ -61,5 +59,4 @@ function InfoCards() {
     );
 }
 
-//Export
 export default InfoCards;
