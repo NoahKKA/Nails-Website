@@ -1,8 +1,8 @@
 //code here
 //added some imports to contact page -ryan
-import TopBar from "../componets/TopBar.jsx";
-import Footer from "../componets/Footer.jsx"
 import Default from "./DefaultPage";
+
+import { useState } from "react";
 
 const ContactPage = () => {
   const [name, setName] = useState('');
@@ -20,7 +20,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div>
+    <Default>
       <h1>Contact Us</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -51,7 +51,7 @@ const ContactPage = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </Default>
   );
 };
 
