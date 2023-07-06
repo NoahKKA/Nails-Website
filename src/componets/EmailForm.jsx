@@ -3,6 +3,7 @@ import { supabase } from "../SupaBaseClient";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+//Makes timeblocks starting from 8am to 6pm in HH:MM
 const timeBlocks = [];
 const startTime = new Date("1970/01/01 08:00").getTime();
 const endTime = new Date("1970/01/01 18:00").getTime();
@@ -24,6 +25,7 @@ export default function EmailForm() {
   const [priceEstimate, setPriceEstimate] = useState(60);
   const [selectedDate, setSelectedDate] = useState(null);
 
+  //FETCHES DATA FROM ACCESSORIES TABLE
   const fetchAccessoryData = async () => {
     try {
       const { data, error } = await supabase.from("accesories").select("*");
@@ -39,6 +41,7 @@ export default function EmailForm() {
     }
   };
 
+  //MAKES SURE TO FETCH ONLY ONCE
   useEffect(() => {
     fetchAccessoryData();
   }, []);
@@ -46,13 +49,13 @@ export default function EmailForm() {
   const handleAccessoryChange = (e, accessoryId) => {
     const isChecked = e.target.checked;
 
-    // Find the accessory with the matching ID
+    // FIND THE ACCESSORY MACTCHING THE ID THAT WAS CLICKED
     const selectedAccessory = accessories.find(
       (accessory) => accessory.accesories_id === accessoryId
     );
 
     if (selectedAccessory) {
-      const accessoryPrice = parseFloat(selectedAccessory.price);
+      const accessoryPrice = parseFloat(selectedAccessory.price); //GETS PRICE OF SELECTED ACCESSORY
 
       setAccessories((prevAccessories) =>
         prevAccessories.map((accessory) =>
@@ -66,6 +69,7 @@ export default function EmailForm() {
         )
       );
 
+      //CACULATES PRICE ESTIMATE BASED ON FOUND ACCESSORY.PRICE FOR EVERY ACCESSORY INSIDE ACCESSORIES ARRAY
       setPriceEstimate((prevPriceEstimate) => {
         if (isChecked) {
           const quantity = selectedAccessory.quantity || 0;
@@ -86,15 +90,18 @@ export default function EmailForm() {
 
   const handleQuantityChange = (e, accessoryId) => {
     const quantity =
-      e.target.value.trim() === "" ? 0 : parseInt(e.target.value);
+      e.target.value.trim() === "" ? 0 : parseInt(e.target.value); //SETS QUANTITY TO A INT
 
     if (isNaN(quantity)) {
+      //IF QUANTITY IS DELETED IT WILL DO NOTHING
       return;
     }
 
     if (quantity < 0) {
+      //STOPS QUANTITY FROM GOING NEGETIVE
       e.target.value = 0;
     } else {
+      //FINDS QUANTITY * ACCESSORY.PRICE AND ADDS IT INTO PRICE ESTIMATE
       const selectedAccessory = accessories.find(
         (accessory) => accessory.accesories_id === accessoryId
       );
@@ -128,7 +135,7 @@ export default function EmailForm() {
     const startTime = e.target.value;
     setSelectedStartTime(startTime);
 
-    // Calculate end time
+    // CALCULATE END TIME IN 4 HOUR INCREMENETS
     const startTimestamp = new Date(`1970/01/01 ${startTime}`).getTime();
     const endTimestamp = startTimestamp + 4 * 60 * 60 * 1000; // 4 hours
     const endTime = new Date(endTimestamp).toLocaleTimeString([], {
@@ -136,6 +143,7 @@ export default function EmailForm() {
       minute: "2-digit",
     });
 
+    //SETS APPOINTMENT.STARTTIME and APPOINTMENT.ENDTIME DATA TO CHOSEN BLOCK
     setAppointmentFormData((prevFormData) => ({
       ...prevFormData,
       startTime,
@@ -145,6 +153,7 @@ export default function EmailForm() {
     setDropdownVisible(false);
   };
 
+  //CREATES APPOINTMENT VARIABLES
   const [appointmentFormData, setAppointmentFormData] = useState({
     name: "",
     date: "",
@@ -153,15 +162,18 @@ export default function EmailForm() {
     priceEstimate: 0,
   });
 
+  //HANDLES SUBMIT BUTTON
   const createAppointment = async (e) => {
     e.preventDefault();
 
     try {
+      //INPUTS PRICEESTIMATE DURING FINAL ASSESMENT
       const updatedAppointmentFormData = {
         ...appointmentFormData,
         priceEstimate: priceEstimate,
       };
 
+      //INSERTS DATA INTO APPOINTMENTS DATABASE
       const { data, error } = await supabase
         .from("appointments")
         .insert([updatedAppointmentFormData]);
@@ -170,7 +182,8 @@ export default function EmailForm() {
         throw error;
       } else {
         console.log("Form Submission Successful.", data);
-        window.location.reload();
+        window.location.reload(); //RELOADS THE PAGE ON SUBMIT AND SENDS USER TO THE TOP OF THE PAGE
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } catch (err) {
       console.log("Error occurred during form submission", err);
@@ -199,7 +212,9 @@ export default function EmailForm() {
               name="name"
               className="form-control"
               placeholder="Enter Name"
-              onChange={(e) =>
+              onChange={(
+                e //SETS APPOINTMENTFORMDATA NAME TO INPUTED NAME
+              ) =>
                 setAppointmentFormData((prevFormData) => ({
                   ...prevFormData,
                   name: e.target.value,
@@ -218,11 +233,13 @@ export default function EmailForm() {
                 selected={selectedDate}
                 onChange={(date) => {
                   setSelectedDate(date);
-                  let formattedDate = null; // Declare formattedDate outside the onChange function
+                  let formattedDate = null;
                   if (date !== null) {
+                    //DOES NOT ALLOW EMPTY STRINGS TO BE INPUTED IN toISOString FUNCTION
                     formattedDate = date.toISOString().split("T")[0];
                   }
                   setAppointmentFormData((prevFormData) => ({
+                    //SETS APPOINTMENTFORMDATA NAME TO INPUTED DATE
                     ...prevFormData,
                     date: formattedDate,
                   }));
@@ -241,7 +258,7 @@ export default function EmailForm() {
             </label>
             <div
               className="form-control"
-              onClick={() => setDropdownVisible(!dropdownVisible)}
+              onClick={() => setDropdownVisible(!dropdownVisible)} //AFTED TIME IS INPUTED IT CLOSES DROPDOWN
             >
               {selectedStartTime || "Select Start Time"}
             </div>
