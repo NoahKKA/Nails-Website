@@ -70,6 +70,18 @@ export default function EmailForm() {
         )
       );
 
+      // UPDATE THE selectedAccessories array in appointFormData
+      setAppointmentFormData((prevFormData) => {
+        const updatedAccessories = isChecked
+          ? [...prevFormData.selectedAccessories, accessoryId] // ADD THE SELECTED ACCESSORIES TO THE ARRAY
+          : prevFormData.selectedAccessories.filter((id) => id !== accessoryId); // REMOVE THE SELECTED ACCESSORIES FROM THE ARRAY
+
+        return {
+          ...prevFormData,
+          selectedAccessories: updatedAccessories,
+        };
+      });
+
       //CACULATES PRICE ESTIMATE BASED ON FOUND ACCESSORY.PRICE FOR EVERY ACCESSORY INSIDE ACCESSORIES ARRAY
       setPriceEstimate((prevPriceEstimate) => {
         if (isChecked) {
@@ -161,6 +173,7 @@ export default function EmailForm() {
     startTime: null,
     endTime: null,
     priceEstimate: null,
+    selectedAccessories: [],
   });
 
   //HANDLES SUBMIT BUTTON
@@ -175,6 +188,8 @@ export default function EmailForm() {
         priceEstimate: priceEstimate,
       };
 
+      //INCLUDE THE selectedAccessories in the updatedAppointmentFormData
+      updatedAppointmentFormData.selectedAccessories = appointmentFormData.selectedAccessories;
       //INSERTS DATA INTO APPOINTMENTS DATABASE
       const { data, error } = await supabase
         .from("appointments")
@@ -242,9 +257,9 @@ export default function EmailForm() {
                 selected={selectedDate}
                 onChange={(date) => {
                   setSelectedDate(date);
-                  let formattedDate = null;  
+                  let formattedDate = null;
                   if (date !== null) {
-                    formattedDate = date.toISOString().split("T")[0];  //ONLY RUNS THE toISOString() WHEN A USER SELECTS A TIMEBLOCK
+                    formattedDate = date.toISOString().split("T")[0]; //ONLY RUNS THE toISOString() WHEN A USER SELECTS A TIMEBLOCK
                   }
                   setAppointmentFormData((prevFormData) => ({
                     ...prevFormData,
@@ -257,7 +272,7 @@ export default function EmailForm() {
                 style={{
                   borderColor:
                     !appointmentFormData.date && isSubmitPressed ? "red" : "",
-                  width: "100%"
+                  width: "100%",
                 }}
                 required
               />
@@ -288,7 +303,9 @@ export default function EmailForm() {
                 size={7}
                 style={{
                   borderColor:
-                    !appointmentFormData.startTime && isSubmitPressed ? "red" : "",
+                    !appointmentFormData.startTime && isSubmitPressed
+                      ? "red"
+                      : "",
                 }}
               >
                 {timeBlocks.map((block) => (
