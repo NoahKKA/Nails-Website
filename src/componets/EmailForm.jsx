@@ -218,6 +218,9 @@ export default function EmailForm() {
         >
           Schedule an Appointment
         </h2>
+        <h4>
+          Base fee of $60
+        </h4>
         <form className="container mt-5">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">

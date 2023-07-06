@@ -1,5 +1,6 @@
 //Imports
 import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Nav";
 import {
   Calendar,
   Cart4,
@@ -16,7 +17,9 @@ import { Dropdown } from "react-bootstrap";
 function TopBar() {
   return (
     <div>
-      <Nav className="py-100 justify-content-between bg-slate-400 fixed-top">
+
+      <Navbar className="fixed-top py-100 justify-content-between bg-gradient-to-r from-green-300 via-cyan-300 to-green-300">
+
         <h2 style={{ marginLeft: "1rem" }}>
           <Nav.Link
             href="/"
@@ -78,7 +81,7 @@ function TopBar() {
             </Dropdown>
           </h2>
         </div>
-      </Nav>
+      </Navbar>
     </div>
   );
 }
