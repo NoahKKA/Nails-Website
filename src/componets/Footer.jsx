@@ -3,7 +3,7 @@ import logo from "../assets/images/abby.png";
 
 function Footer() {
     return (
-        <footer class="bg-gray-900 text-white py-8">
+        <footer class="bg-gray-900 text-white py-20">
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap items-center justify-between">
                     <div class="w-full md:w-1/4 mb-4 md:mb-0">
@@ -16,6 +16,7 @@ function Footer() {
                                 <a
                                     href="https://www.instagram.com/grrr_abby/"
                                     class="text-gray-300 hover:text-white"
+                                    target="_blank"
                                 >
                                     <Instagram />
                                 </a>

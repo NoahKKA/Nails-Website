@@ -3,9 +3,5 @@
 @tailwind utilities;
 
 .Home {
-    background-color: pink;
-}
-
-.black-link {
-    color: black;
+    background-color: white;
 }

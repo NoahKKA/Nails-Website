@@ -1,33 +1,35 @@
 //Imports
 import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Calendar, Cart4, Moon } from "react-bootstrap-icons";
-import IconImg from "../assets/images/abby.png";
-import { Link } from "react-router-dom";
+import { Calendar, Cart4, Moon, House} from "react-bootstrap-icons";
 
 //Function
 function TopBar() {
-  return (
-    <div>
-      <Navbar fixed="top" className="bg-cyan-500">
-        <Link to='/' className="px-4">
-            <img className="max-w-[5%]" src={IconImg} alt="Logo" />
-        </Link>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Nav.Link href="#DarkMode" className="px-2" target="_blank">
-            <Moon />
-          </Nav.Link>
-          <Nav.Link href="#Shopping" className="px-2" target="_blank">
-            <Cart4 />
-          </Nav.Link>
-          <Link to="/Calendar" className="px-2 text-black">
-            <Calendar />
-          </Link>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
-  );
+    return (
+        <div>
+            <Nav className="py-100 justify-content-center bg-slate-400">
+                <h2>
+                <Nav.Link  href="/" className="text-black px-4">
+                    <House />
+                </Nav.Link>
+                </h2>
+                <h2>
+                <Nav.Link href="/Shopping" className="text-black px-4">
+                    <Cart4 />
+                </Nav.Link>
+                </h2>
+                <h2>
+                <Nav.Link href="/Calendar" className="text-black px-4">
+                    <Calendar />
+                </Nav.Link>
+                </h2>
+                <h2>
+                <Nav.Link href="/DarkMode" className="text-black px-4">
+                    <Moon />
+                </Nav.Link>
+                </h2>
+            </Nav>
+        </div>
+    );
 }
 
 //Export

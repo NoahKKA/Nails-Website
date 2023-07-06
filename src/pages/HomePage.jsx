@@ -8,8 +8,8 @@ export default function HomePage() {
     return (
         <Default>
             <div className="Home">
-                <body className="bg-rose-500">
-                    <div className="max-w-7xl mx-auto ">
+                <body>
+                    <div className="max-w-7xl mx-auto">
                         <MidImgLogo />
                         <InfoCards />
                         <Products />
