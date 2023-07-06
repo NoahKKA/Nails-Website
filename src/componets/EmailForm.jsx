@@ -92,28 +92,32 @@ export default function EmailForm() {
       return;
     }
 
-    const selectedAccessory = accessories.find(
-      (accessory) => accessory.accesories_id === accessoryId
-    );
-
-    if (selectedAccessory) {
-      const accessoryPrice = parseFloat(selectedAccessory.price);
-      const prevQuantity = selectedAccessory.quantity || 0;
-
-      setPriceEstimate((prevPriceEstimate) => {
-        const prevTotalPrice = prevQuantity * accessoryPrice;
-        const newTotalPrice = quantity * accessoryPrice;
-
-        return prevPriceEstimate - prevTotalPrice + newTotalPrice;
-      });
-
-      setAccessories((prevAccessories) =>
-        prevAccessories.map((accessory) =>
-          accessory.accesories_id === accessoryId
-            ? { ...accessory, quantity: quantity }
-            : accessory
-        )
+    if (quantity < 0) {
+      e.target.value = 0;
+    } else {
+      const selectedAccessory = accessories.find(
+        (accessory) => accessory.accesories_id === accessoryId
       );
+
+      if (selectedAccessory) {
+        const accessoryPrice = parseFloat(selectedAccessory.price);
+        const prevQuantity = selectedAccessory.quantity || 0;
+
+        setPriceEstimate((prevPriceEstimate) => {
+          const prevTotalPrice = prevQuantity * accessoryPrice;
+          const newTotalPrice = quantity * accessoryPrice;
+
+          return prevPriceEstimate - prevTotalPrice + newTotalPrice;
+        });
+
+        setAccessories((prevAccessories) =>
+          prevAccessories.map((accessory) =>
+            accessory.accesories_id === accessoryId
+              ? { ...accessory, quantity: quantity }
+              : accessory
+          )
+        );
+      }
     }
   };
 
@@ -214,7 +218,10 @@ export default function EmailForm() {
                 selected={selectedDate}
                 onChange={(date) => {
                   setSelectedDate(date);
-                  const formattedDate = date.toISOString().split("T")[0]; //returns in formate yyyy-dd-mmThh:mm:ss:sssZ, splits it from T and goes into the yyyy-dd-mm portion.  It removed everything from T and the right of it.
+                  let formattedDate = null; // Declare formattedDate outside the onChange function
+                  if (date !== null) {
+                    formattedDate = date.toISOString().split("T")[0];
+                  }
                   setAppointmentFormData((prevFormData) => ({
                     ...prevFormData,
                     date: formattedDate,
