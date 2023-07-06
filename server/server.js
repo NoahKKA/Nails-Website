@@ -16,7 +16,6 @@ app.use(express.urlencoded({ extended:false }));
 const appointmentsController = require('./controllers/appointments_controller')
 app.use('/api/appointments', appointmentsController)
 
-
 // LISTEN
 app.listen(4005, () => {
     console.log("Server is running on port 4005")
@@ -26,3 +25,4 @@ app.listen(4005, () => {
 app.get('*', (req, res) => {
     res.status('404').send('404: Page not found')
   })
+

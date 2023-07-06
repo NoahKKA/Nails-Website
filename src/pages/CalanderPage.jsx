@@ -1,14 +1,16 @@
 import Cal1 from "../componets/Calendar";
 import Default from "./DefaultPage";
+import EmailForm from "../componets/EmailForm";
 
-
-export default function CalendarPage(){
+export default function CalendarPage() {
     return (
         <div>
             <Default>
-                <Cal1/>
+                <div className="max-w-7xl mx-auto">
+                    <Cal1 />
+                    <EmailForm/>
+                </div>
             </Default>
         </div>
-        
-    )
+    );
 }
