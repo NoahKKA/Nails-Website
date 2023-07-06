@@ -15,7 +15,7 @@ import { Dropdown } from "react-bootstrap";
 function TopBar() {
   return (
     <div>
-      <Navbar className="fixed-top py-100 justify-content-between bg-gradient-to-r from-green-300 via-cyan-300 to-green-300">
+      <Navbar className="fixed-top max-  justify-content-between bg-gradient-to-r from-green-300 via-cyan-300 to-green-300">
         <h2 style={{ marginLeft: "1rem" }}>
           <Nav.Link
             href="/"
