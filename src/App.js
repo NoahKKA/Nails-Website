@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import CalendarPage from "./pages/CalanderPage";
 import Error404Page from "./pages/Error404";
 import EditPage from "./pages/EditPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                     <Route path='/' element={<HomePage/>}/>
                     <Route path='/Calendar' element={<CalendarPage/>}/>
                     <Route path='appointments/:id' element={<EditPage/>}/>
+                    <Route path='/Contact' element={<ContactPage/>}/>
                     <Route path='*' element={<Error404Page/>}/>
                 </Routes>           
             </Router>
