@@ -1,6 +1,7 @@
 //code here
 //added some imports to contact page -ryan
 import Default from "./DefaultPage";
+import "../App.css";
 
 import { useState } from "react";
 
