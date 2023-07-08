@@ -208,7 +208,7 @@ export default function EmailForm() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <div className="d-flex justify-content-center align-items-center mt-20">
       <div>
         <h2
           style={{
