@@ -5,7 +5,8 @@ import cPro3 from "../assets/images/IMG_5.png";
 
 function Products() {
     return (
-        <Carousel className=" py-10">
+        
+        <Carousel className=" my-20">
             <Carousel.Item interval={2000} >
                 <img 
                 className="d-block max-h-[100%] max-w-[100%]" 
