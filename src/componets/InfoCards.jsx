@@ -1,11 +1,8 @@
 //Imports
-import CardGroup from "react-bootstrap/CardGroup";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import Gel from "../assets/images/GelNail.jpg";
-import Acr from "../assets/images/acrylicNail.jpg";
 import Chr from "../assets/images/CharmNails.jpg";
 import Chrome from "../assets/images/chrome nails.jpg";
+import Button from 'react-bootstrap/Button';
 
 function InfoCards() {
     return (
@@ -40,6 +37,7 @@ function InfoCards() {
                     creations. Step into the world of Charm Nails and let your nails become the canvas for your 
                     unique style and self-expression.
                     </p>
+                    <Button href="/Calendar" className="text-black bg-gradient-to-r from-green-300 to-cyan-300 ">Schedule</Button>
                 </div>
             </div>
 
@@ -64,6 +62,7 @@ function InfoCards() {
                         extended wear time, and a natural-looking appearance. They can be customized with various colors, finishes
                         and nail art designs, making them a versatile option for those seeking a flawless and long-lasting manicure.
                     </p>
+                    <Button href="/Calendar" className="text-black bg-gradient-to-r from-green-300 to-cyan-300 ">Schedule</Button>
                 </div>
             </div>
 
@@ -88,6 +87,7 @@ function InfoCards() {
                         extended wear time, and a natural-looking appearance. They can be customized with various colors, finishes
                         and nail art designs, making them a versatile option for those seeking a flawless and long-lasting manicure.
                     </p>
+                    <Button href="/Calendar" className="text-black bg-gradient-to-r from-green-300 to-cyan-300 ">Schedule</Button>
                 </div>
             </div>
 
