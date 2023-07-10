@@ -1,24 +1,23 @@
-import TopBar from "./pages/home-page/TopBar";
-import MidImgLogo from "./pages/home-page/logoWithBg";
-import InfoCards from "./pages/home-page/InfoCards";
-import Products from "./pages/home-page/Products";
-import Footer from "./pages/home-page/Footer";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import HomePage from "./pages/HomePage";
+import CalendarPage from "./pages/CalanderPage";
+import Error404Page from "./pages/Error404";
+import EditPage from "./pages/EditPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
     return (
         <div className="App">
-            <body className="bg-rose-500">
-                <div className="TopBar">
-                    <TopBar />
-                </div>
-                <div className="max-w-7xl mx-auto ">
-                    <MidImgLogo />
-                    <InfoCards />
-                    <Products />
-                </div>
-                <Footer />
-            </body>
+            <Router>
+                <Routes>
+                    <Route path='/' element={<HomePage/>}/>
+                    <Route path='/Calendar' element={<CalendarPage/>}/>
+                    <Route path='appointments/:id' element={<EditPage/>}/>
+                    <Route path='/Contact' element={<ContactPage/>}/>
+                    <Route path='*' element={<Error404Page/>}/>
+                </Routes>           
+            </Router>
         </div>
     );
 }

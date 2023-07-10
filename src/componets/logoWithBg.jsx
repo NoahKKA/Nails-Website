@@ -1,6 +1,5 @@
 //Imports
-
-import BgImg from "../img/temp.jpg";
+import BgImg from "../assets/images/Logo1.png";
 
 //Function
 function MidImgLogo() {
@@ -8,7 +7,7 @@ function MidImgLogo() {
         <body>
             <div >
                 <img
-                    className=" my-2 py-25 mx-auto max-w-full "
+                    className="py-25 mx-auto max-w-[100%]"
                     src={BgImg}
                     alt="Logo"
                 />
