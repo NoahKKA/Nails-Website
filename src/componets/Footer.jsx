@@ -1,5 +1,5 @@
 import { Instagram, Facebook } from "react-bootstrap-icons";
-import logo from "../assets/images/abby.png";
+import logo from "../assets/images/logo.png";
 
 function Footer() {
     return (
