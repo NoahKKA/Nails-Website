@@ -113,149 +113,123 @@ function EditPage() {
   };
 
   return (
-    <Default fixed="bottom" className="bg-green-100">
-      {appointment.name && (
-
-        <div className="text-center mt-20 bg-green-100">
-          <h4>{appointment.name}</h4>
-          <h2>{appointment.date}</h2>
-          <p>
-            <strong>Start Time:</strong> {appointment.startTime}
-          </p>
-          <p>
-            <strong>End Time:</strong> {appointment.endTime}
-          </p>
-          <p>
-            <strong>Price Estimate:</strong> ${appointment.priceEstimate}
-          </p>
-
-          {accessories.length > 0 && (
-            <div>
-              <h4>Selected Accessories:</h4>
-              <ul>
-                {accessories.map((accessory) => (
-                  <li key={accessory.accessoryId}>{accessory.name}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        <div className="d-flex justify-content-center align-items-center mt-20">
-          <div>
-            <h2
-              style={{
-                fontFamily: "Cormorant Upright serif",
-                fontWeight: "bolder",
-              }}
-            >
-              Schedule an Appointment
-            </h2>
-            <h4>Base fee of $60</h4>
-            <form className="container mt-5">
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">
-                  Edit Name:
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="form-control"
-                  placeholder="Enter Name"
+     <Default fixed="bottom" className="bg-green-100">
+       {appointment.name && (
+         <div className="d-flex justify-content-center align-items-center mt-20">
+           <div>
+             <h2
+               style={{
+                 fontFamily: "Cormorant Upright serif",
+                 fontWeight: "bolder",
+               }}
+             >
+               Schedule an Appointment
+             </h2>
+             <h4>Base fee of $60</h4>
+             <form className="container mt-5">
+               <div className="mb-3">
+                 <label htmlFor="name" className="form-label">
+                   Edit Name:
+                 </label>
+                 <input
+                   type="text"
+                   id="name"
+                   name="name"
+                   className="form-control"
+                   placeholder="Enter Name"
                   value={appointment.name}
-                  onChange={(e) =>
-                    setAppointment((prevAppointment) => ({
-                      ...prevAppointment,
-                      name: e.target.value,
-                    }))
-                  }
-                  required
+                   onChange={(e) =>
+                     setAppointment((prevAppointment) => ({
+                       ...prevAppointment,
+                       name: e.target.value,
+                     }))
+                   }
+                   required
                 />
               </div>
+               <div className="mb-3">
+                 <label htmlFor="date" className="form-label">
+                   Edit Date:
+                 </label>
+                 <div className="input-group">
+                   <input
+                     type="date"
+                     id="date"
+                     name="date"
+                     className="form-control"
+                     value={
+                       selectedDate
+                         ? selectedDate.toISOString().split("T")[0]
+                         : ""
+                     }
+                     onChange={(e) => setSelectedDate(new Date(e.target.value))}
+                     required
+                   />
+                 </div>
+               </div>
 
-              <div className="mb-3">
-                <label htmlFor="date" className="form-label">
-                  Edit Date:
-                </label>
-                <div className="input-group">
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    className="form-control"
-                    value={
-                      selectedDate
-                        ? selectedDate.toISOString().split("T")[0]
-                        : ""
-                    }
-                    onChange={(e) => setSelectedDate(new Date(e.target.value))}
-                    required
-                  />
-                </div>
-              </div>
+               <div className="mb-3">
+                 <label htmlFor="start-time" className="form-label">
+                   Edit Start Time:
+                 </label>
+                 <div
+                   className="form-control"
+                   onClick={() => setDropdownVisible(!dropdownVisible)}
+                 >
+                   {selectedStartTime || "Select Start Time"}
+                 </div>
+                 {dropdownVisible && (
+                   <select
+                     id="start-time"
+                     name="startTime"
+                     className="form-control"
+                     value={selectedStartTime}
+                     onChange={handleStartTimeChange}
+                     required
+                     size={7}
+                   >
+                     {timeBlocks.map((block) => (
+                       <option key={block.value} value={block.value}>
+                         {block.label}
+                       </option>
+                     ))}
+                   </select>
+                 )}
+               </div>
 
-              <div className="mb-3">
-                <label htmlFor="start-time" className="form-label">
-                  Edit Start Time:
-                </label>
-                <div
-                  className="form-control"
-                  onClick={() => setDropdownVisible(!dropdownVisible)}
-                >
-                  {selectedStartTime || "Select Start Time"}
-                </div>
-                {dropdownVisible && (
-                  <select
-                    id="start-time"
-                    name="startTime"
-                    className="form-control"
-                    value={selectedStartTime}
-                    onChange={handleStartTimeChange}
-                    required
-                    size={7}
-                  >
-                    {timeBlocks.map((block) => (
-                      <option key={block.value} value={block.value}>
-                        {block.label}
-                      </option>
-                    ))}
-                  </select>
-                )}
-              </div>
+               <div className="mb-3">
+                 <label htmlFor="end-time" className="form-label">
+                   End Time:
+                 </label>
+                 <input
+                   type="text"
+                   id="end-time"
+                   name="endTime"
+                   className="form-control"
+                   placeholder="End Time"
+                   value={appointment.endTime}
+                   readOnly
+                   required
+                 />
+               </div>
+             </form>
+           </div>
+         </div>
+       )}
 
-              <div className="mb-3">
-                <label htmlFor="end-time" className="form-label">
-                  End Time:
-                </label>
-                <input
-                  type="text"
-                  id="end-time"
-                  name="endTime"
-                  className="form-control"
-                  placeholder="End Time"
-                  value={appointment.endTime}
-                  readOnly
-                  required
-                />
-              </div>
-            </form>
-          </div>
-
-        </div>
-      )}
-
-      <div className="text-center">
-        <button
-          onClick={handleDeletedAppointment}
-          className="btn btn-danger mb-5"
-        >
-          Delete Appointment
-        </button>
-        <button onClick={handleSaveChanges} className="btn btn-primary mb-5">
-          Save Changes
-        </button>
+       <div className="text-center">
+         <button
+           onClick={handleDeletedAppointment}
+           className="btn btn-danger mb-5"
+         >
+           Delete Appointment
+         </button>
+         <button onClick={handleSaveChanges} className="btn btn-primary mb-5">
+           Save Changes
+         </button>
       </div>
-    </Default>
-  );
+     </Default>
+   );
 }
 
 export default EditPage;
