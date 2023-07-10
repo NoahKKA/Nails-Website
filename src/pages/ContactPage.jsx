@@ -39,7 +39,7 @@ fetch(FORM_ENDPOINT, {
   };
 return (
     <Default>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto my-20">
     <form
       action={FORM_ENDPOINT}
       onSubmit={handleSubmit}
