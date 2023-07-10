@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Default from "./DefaultPage";
 
-const FORM_ENDPOINT = "https://herotofu.com/start"; // TODO - update to the correct endpoint
+const FORM_ENDPOINT = "/contact"; // TODO - update to the correct endpoint
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -50,7 +50,7 @@ return (
           type="text"
           placeholder="Your name"
           name="name"
-          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
           required
         />
       </div>
@@ -59,7 +59,7 @@ return (
           type="email"
           placeholder="Email"
           name="email"
-          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
           required
         />
       </div>
@@ -67,7 +67,7 @@ return (
         <textarea
           placeholder="Your message"
           name="message"
-          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
           required
         />
       </div>
