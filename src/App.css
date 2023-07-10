@@ -30,3 +30,7 @@
   .custom-toggle::after {
     display: none !important;
   }
+
+  .contact {
+    border: navy;
+  }
