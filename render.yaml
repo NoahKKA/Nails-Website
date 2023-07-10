@@ -1,0 +1,9 @@
+routes:
+  - source: /calendar
+    destination: /index.html
+  - source: /appointments/:id
+    destination: /index.html
+  - source: /error404
+    destination: /error404.html
+  - source: /
+    destination: /index.html
