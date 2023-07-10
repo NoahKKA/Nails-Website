@@ -113,8 +113,32 @@ function EditPage() {
   };
 
   return (
-    <Default fixed="bottom">
+    <Default fixed="bottom" className="bg-green-100">
       {appointment.name && (
+
+        <div className="text-center mt-20 bg-green-100">
+          <h4>{appointment.name}</h4>
+          <h2>{appointment.date}</h2>
+          <p>
+            <strong>Start Time:</strong> {appointment.startTime}
+          </p>
+          <p>
+            <strong>End Time:</strong> {appointment.endTime}
+          </p>
+          <p>
+            <strong>Price Estimate:</strong> ${appointment.priceEstimate}
+          </p>
+
+          {accessories.length > 0 && (
+            <div>
+              <h4>Selected Accessories:</h4>
+              <ul>
+                {accessories.map((accessory) => (
+                  <li key={accessory.accessoryId}>{accessory.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         <div className="d-flex justify-content-center align-items-center mt-20">
           <div>
             <h2
@@ -215,6 +239,7 @@ function EditPage() {
               </div>
             </form>
           </div>
+
         </div>
       )}
 

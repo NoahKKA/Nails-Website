@@ -56,8 +56,8 @@ function Cal1() {
   };
 
   return (
-    <div className="App">
-      <h1 className="mt-20 text-center">See When We Free!</h1>
+    <div className="App bg-white">
+     
       <Calendar
         localizer={localizer}
         events={allEvents}
