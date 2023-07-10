@@ -60,9 +60,9 @@ function EditPage() {
   };
 
   return (
-    <Default fixed="bottom">
+    <Default fixed="bottom" className="bg-green-100">
       {appointment.name && (
-        <div className="text-center mt-20">
+        <div className="text-center mt-20 bg-green-100">
           <h4>{appointment.name}</h4>
           <h2>{appointment.date}</h2>
           <p>
