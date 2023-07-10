@@ -113,7 +113,7 @@ function EditPage() {
   };
 
   return (
-    <Default fixed="bottom">
+    <Default fixed="bottom" className="bg-green-100">
       {appointment.name && (
         <div className="d-flex justify-content-center align-items-center mt-20">
           <div>
