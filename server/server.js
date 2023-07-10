@@ -11,7 +11,7 @@ require('dotenv').config()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }));
-
+app.use(express.static(path.join(__dirname, '../build')))
 // CONTROLLERS
 const appointmentsController = require('./controllers/appointments_controller')
 app.use('/api/appointments', appointmentsController)
@@ -23,6 +23,6 @@ app.listen(4005, () => {
 
 // 404 Page
 app.get('*', (req, res) => {
-    res.status('404').send('404: Page not found')
+    res.status(404).send('404: Page not found')
   })
 
