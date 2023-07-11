@@ -1,9 +1,22 @@
+static:
+  - source: /
+    headers:
+      - key: Cache-Control
+        value: public, max-age=0, must-revalidate
+
 routes:
-  - source: /calendar
+  - source: /Calendar
     destination: /index.html
+    spa: true
   - source: /appointments/:id
     destination: /index.html
-  - source: /error404
-    destination: /error404.html
+    spa: true
+  - source: /Contact
+    destination: /index.html
+    spa: true
   - source: /
     destination: /index.html
+    spa: true
+  - source: /error404
+    destination: /index.html
+    spa: true
