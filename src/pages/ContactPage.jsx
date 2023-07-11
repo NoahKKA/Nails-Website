@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Default from "./DefaultPage";
 
-const FORM_ENDPOINT = "https://herotofu.com/start"; // TODO - update to the correct endpoint
+const FORM_ENDPOINT = "/contact"; // TODO - update to the correct endpoint
 
 const ContactForm = () => {
     const [submitted, setSubmitted] = useState(false);
@@ -17,18 +17,7 @@ const ContactForm = () => {
             }
         }
 
-        fetch(FORM_ENDPOINT, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Form response was not ok");
-                }
+
 
                 setSubmitted(true);
             })
