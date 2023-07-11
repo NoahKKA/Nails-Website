@@ -41,7 +41,7 @@ const ContactForm = () => {
         <Default className=" bg-green-100">
             <div className="bg-green-100 pt-20">
                 <div className="max-w-7xl mx-auto  pt-10">
-                    <h2 className="pt-5 pb-20 text-center">Got something to say! Let us know</h2>
+                    <h2 className="pt-5 pb-20 text-center">Got something to say! Let us know!</h2>
                     <form
                         action={FORM_ENDPOINT}
                         onSubmit={handleSubmit}
@@ -82,9 +82,9 @@ const ContactForm = () => {
                                 required
                             />
                         </div>
-                        <div className="pb-3 pt-0">
+                        <div className="pb-3 pt-0 mx-auto">
                             <button
-                                className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 pb-1 ease-linear transition-all duration-150"
+                                className="text-center bg-gradient-to-r from-green-300 to-cyan-300 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 pb-1 ease-linear transition-all duration-150"
                                 type="submit"
                                 data-toggle="tooltip"
                                 data-placement="bottom"

@@ -417,7 +417,7 @@ export default function EmailForm() {
 
                     <button
                         type="submit"
-                        className="btn btn-primary d-flex mx-auto mb-3"
+                        className="btn btn-primary d-flex mx-auto mb-3 animate-pulse"
                         onClick={(e) => createAppointment(e)}
                     >
                         Submit
