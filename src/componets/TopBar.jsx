@@ -1,33 +1,56 @@
 //Imports
 import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Calendar, Cart4, Moon } from "react-bootstrap-icons";
-import IconImg from "../assets/images/abby.png";
-import { Link } from "react-router-dom";
+import Navbar from "react-bootstrap/Nav";
+import {
+    House,
+    Calendar,
+    Send
+} from "react-bootstrap-icons";
+
 
 //Function
 function TopBar() {
-  return (
-    <div>
-      <Navbar fixed="top" className="bg-cyan-500">
-        <Link to='/' className="px-4">
-            <img className="max-w-[5%]" src={IconImg} alt="Logo" />
-        </Link>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Nav.Link href="#DarkMode" className="px-2" target="_blank">
-            <Moon />
-          </Nav.Link>
-          <Nav.Link href="#Shopping" className="px-2" target="_blank">
-            <Cart4 />
-          </Nav.Link>
-          <Link to="/Calendar" className="px-2 text-black">
-            <Calendar />
-          </Link>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
-  );
+    return (
+        <div>
+            <Navbar className="fixed-top justify-content-between bg-gradient-to-r from-green-300 via-cyan-300 to-green-300">
+                <h2 style={{ marginLeft: "1rem" }}>
+                    <Nav.Link
+                        href="/"
+                        className="text-black px-4"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Home"
+                    >
+                        <House />
+                    </Nav.Link>
+                </h2>
+                <div className="d-flex align-items-center">
+                    <h2 className="text-center" style={{ marginRight: "1rem" }}>
+                        <Nav.Link
+                            href="/Calendar"
+                            className="text-black px-4"
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Calendar"
+                        >
+                            <Calendar />
+                        </Nav.Link>
+                    </h2>
+                    <h2 className="text-center" style={{ marginRight: "1rem" }}>
+                        <Nav.Link
+                            href="/contact"
+                            className="text-black px-4"
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Contact us"
+                        >
+                            <Send />
+                        </Nav.Link>
+                    </h2>
+                </div>
+            </Navbar>
+        </div>
+    );
 }
 
 //Export
