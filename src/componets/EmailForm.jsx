@@ -418,7 +418,7 @@ export default function EmailForm() {
 
                     <Button
                         type="submit"
-                        className="btn btn-primary d-flex mx-auto mb-20 animate-pulse  bg-gradient-to-r from-green-300 to-cyan-300 text-black"
+                        className="btn btn-primary d-flex mx-auto mb-20 hover:animate-none animate-bounce animate-pulse  bg-gradient-to-r from-green-300 to-cyan-300 text-black"
                         onClick={(e) => createAppointment(e)}
                     >
                         Submit
