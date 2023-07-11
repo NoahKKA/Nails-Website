@@ -38,7 +38,7 @@ function InfoCards() {
                     </p>
                     <Button
                         href="/Calendar"
-                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 "
+                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 animate-bounce"
                     >
                         Schedule
                     </Button>
@@ -72,7 +72,7 @@ function InfoCards() {
                     </p>
                     <Button
                         href="/Calendar"
-                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 "
+                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 animate-bounce"
                     >
                         Schedule
                     </Button>
@@ -106,7 +106,7 @@ function InfoCards() {
                     </p>
                     <Button
                         href="/Calendar"
-                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 "
+                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 animate-bounce"
                     >
                         Schedule
                     </Button>
