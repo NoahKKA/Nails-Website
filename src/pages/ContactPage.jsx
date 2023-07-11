@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Default from "./DefaultPage";
+import Button from "react-bootstrap/Button";
 
 const FORM_ENDPOINT = "https://herotofu.com/start"; // TODO - update to the correct endpoint
 
@@ -40,8 +41,10 @@ const ContactForm = () => {
     return (
         <Default className=" bg-green-100">
             <div className="bg-green-100 pt-20">
-                <div className="max-w-7xl mx-auto  pt-10">
-                    <h2 className="pt-5 pb-20 text-center">Got something to say! Let us know!</h2>
+                <div className="max-w-7xl mx-auto pt-10">
+                    <h2 className="pt-5 pb-20 text-center">
+                        Got something to say? Let us know!
+                    </h2>
                     <form
                         action={FORM_ENDPOINT}
                         onSubmit={handleSubmit}
@@ -83,21 +86,21 @@ const ContactForm = () => {
                             />
                         </div>
                         <div className="pb-3 pt-0 mx-auto">
-                            <button
-                                className="text-center bg-gradient-to-r from-green-300 to-cyan-300 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 pb-1 ease-linear transition-all duration-150"
+                            <Button
+                                className="mx-auto text-center bg-gradient-to-r from-green-300 to-cyan-300 rounded-lg p-2 text-black"
                                 type="submit"
                                 data-toggle="tooltip"
                                 data-placement="bottom"
                                 title="Send"
                             >
                                 Send a message
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </div>
             </div>
             <div className="py-20 bg-green-100"> </div>
-            <div className="py-20 bg-green-100"> </div>
+            
         </Default>
     );
 };
