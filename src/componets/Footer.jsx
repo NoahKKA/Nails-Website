@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "react-bootstrap-icons";
+import { Instagram } from "react-bootstrap-icons";
 import logo from "../assets/images/logo.png";
 
 function Footer() {
@@ -16,7 +16,7 @@ function Footer() {
                     </div>
                     <div class="w-full md:w-1/4 mb-4 md:mb-0">
                         <h3 class="text-lg mb-2">Follow us on Instagram</h3>
-                        <ul class="flex space-x-4">
+                        <ul class="flex space-x-4 ">
                             <li>
                                 <a
                                     href="https://www.instagram.com/grrr_abby/"
@@ -24,11 +24,6 @@ function Footer() {
                                     target="_blank"
                                 >
                                     <Instagram />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-black hover:text-white">
-                                    <Facebook />
                                 </a>
                             </li>
                         </ul>

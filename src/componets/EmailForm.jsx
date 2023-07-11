@@ -394,7 +394,7 @@ export default function EmailForm() {
                                                 type="number"
                                                 id={`quantity_${accessory.accesories_id}`}
                                                 name={`quantity_${accessory.accesories_id}`}
-                                                className="form-control"
+                                                className="form-control  "
                                                 placeholder="Quantity"
                                                 disabled={!accessory.checked}
                                                 onChange={(e) =>
