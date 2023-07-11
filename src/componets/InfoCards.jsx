@@ -38,7 +38,7 @@ function InfoCards() {
                     </p>
                     <Button
                         href="/Calendar"
-                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 animate-bounce"
+                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 hover:animate-none animate-bounce"
                     >
                         Schedule
                     </Button>
@@ -72,7 +72,7 @@ function InfoCards() {
                     </p>
                     <Button
                         href="/Calendar"
-                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 animate-bounce"
+                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 hover:animate-none animate-bounce"
                     >
                         Schedule
                     </Button>
@@ -89,7 +89,7 @@ function InfoCards() {
                     />
                 </div>
                 <div class="col-md-8 row" className="text-center">
-                    <h4 className="mb-10">Gel nails</h4>
+                    <h4 className="mb-10">Chrome nails</h4>
                     <p>
                         Gel nails are a popular type of artificial nails that
                         provide a long-lasting and durable manicure. They are
@@ -106,7 +106,7 @@ function InfoCards() {
                     </p>
                     <Button
                         href="/Calendar"
-                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 animate-bounce"
+                        className="text-black bg-gradient-to-r from-green-300 to-cyan-300 hover:animate-none animate-bounce"
                     >
                         Schedule
                     </Button>
