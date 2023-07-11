@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../SupaBaseClient";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Button from "react-bootstrap/Button";
 
 //Makes timeblocks starting from 8am to 6pm in HH:MM
 const timeBlocks = [];
@@ -415,13 +416,13 @@ export default function EmailForm() {
                         </h2>
                     </div>
 
-                    <button
+                    <Button
                         type="submit"
-                        className="btn btn-primary d-flex mx-auto mb-3 animate-pulse"
+                        className="btn btn-primary d-flex mx-auto mb-20 animate-pulse  bg-gradient-to-r from-green-300 to-cyan-300 text-black"
                         onClick={(e) => createAppointment(e)}
                     >
                         Submit
-                    </button>
+                    </Button>
                 </form>
             </div>
         </div>
