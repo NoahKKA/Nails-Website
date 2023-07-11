@@ -4,11 +4,12 @@ import EmailForm from "../componets/EmailForm";
 
 export default function CalendarPage() {
     return (
-        <div>
+        <div className="bg-green-100">
             <Default>
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto ">
+                    <h1 className="py-20 text-center">See When We Free!</h1>
                     <Cal1 />
-                    <EmailForm/>
+                    <EmailForm />
                 </div>
             </Default>
         </div>

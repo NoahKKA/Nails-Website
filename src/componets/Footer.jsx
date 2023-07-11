@@ -1,5 +1,5 @@
 import { Instagram, Facebook } from "react-bootstrap-icons";
-import logo from "../assets/images/abby.png";
+import logo from "../assets/images/logo.png";
 
 function Footer() {
     return (
@@ -7,7 +7,12 @@ function Footer() {
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap items-center justify-between">
                     <div class="w-full md:w-1/4 mb-4 md:mb-0">
-                        <img  href="/" src={logo} alt="Company Logo" class="h-20" />
+                        <img
+                            href="/"
+                            src={logo}
+                            alt="Company Logo"
+                            class="h-20"
+                        />
                     </div>
                     <div class="w-full md:w-1/4 mb-4 md:mb-0">
                         <h3 class="text-lg mb-2">Follow us on Instagram</h3>
@@ -22,16 +27,13 @@ function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="text-black hover:text-white"
-                                >
+                                <a href="#" class="text-black hover:text-white">
                                     <Facebook />
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div className="md:w-1/4">
                         <div>
                             <h5>Operating Hours</h5>
