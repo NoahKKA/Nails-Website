@@ -70,11 +70,28 @@ export default function EmailForm() {
         )
       );
 
-      // UPDATE THE selectedAccessories array in appointFormData
+      // UPDATE THE selectedAccessories array in appointmentFormData
       setAppointmentFormData((prevFormData) => {
-        const updatedAccessories = isChecked
-          ? [...prevFormData.selectedAccessories, accessoryId] // ADD THE SELECTED ACCESSORIES TO THE ARRAY
-          : prevFormData.selectedAccessories.filter((id) => id !== accessoryId); // REMOVE THE SELECTED ACCESSORIES FROM THE ARRAY
+        let updatedAccessories = [...prevFormData.selectedAccessories];
+
+        if (isChecked) {
+          if (selectedAccessory.isPerEach) {
+            updatedAccessories.push([
+              accessoryId,
+              selectedAccessory.quantity || 0,
+            ]);
+          } else {
+            updatedAccessories.push(accessoryId);
+          }
+        } else {
+          updatedAccessories = updatedAccessories.filter((item) => {
+            if (Array.isArray(item)) {
+              return item[0] !== accessoryId;
+            } else {
+              return item !== accessoryId;
+            }
+          });
+        }
 
         return {
           ...prevFormData,
@@ -102,44 +119,59 @@ export default function EmailForm() {
   };
 
   const handleQuantityChange = (e, accessoryId) => {
-    const quantity =
-      e.target.value.trim() === "" ? 0 : parseInt(e.target.value); //SETS QUANTITY TO A INT
-
+    const quantity = e.target.value.trim() === "" ? 0 : parseInt(e.target.value); // Set quantity as an integer
+  
     if (isNaN(quantity)) {
-      //IF QUANTITY IS DELETED IT WILL DO NOTHING
+      // If quantity is deleted or not a valid number, do nothing
       return;
     }
-
+  
     if (quantity < 0) {
-      //STOPS QUANTITY FROM GOING NEGETIVE
+      // Prevent quantity from becoming negative
       e.target.value = 0;
     } else {
-      //FINDS QUANTITY * ACCESSORY.PRICE AND ADDS IT INTO PRICE ESTIMATE
-      const selectedAccessory = accessories.find(
-        (accessory) => accessory.accesories_id === accessoryId
+      setAppointmentFormData((prevFormData) => {
+        const updatedAccessories = prevFormData.selectedAccessories.map((accessory) => {
+          if (Array.isArray(accessory) && accessory[0] === accessoryId) {
+            // If accessory with ID and quantity already exists, update the quantity
+            return [accessoryId, quantity];
+          }
+          return accessory;
+        });
+  
+        // If accessory with ID and quantity doesn't exist, add it
+        if (!updatedAccessories.some((accessory) => Array.isArray(accessory) && accessory[0] === accessoryId)) {
+          updatedAccessories.push([accessoryId, quantity]);
+        }
+  
+        return {
+          ...prevFormData,
+          selectedAccessories: updatedAccessories,
+        };
+      });
+  
+      setAccessories((prevAccessories) =>
+        prevAccessories.map((accessory) =>
+          accessory.accesories_id === accessoryId ? { ...accessory, quantity: quantity } : accessory
+        )
       );
-
+  
+      // Calculate the updated price estimate based on the new quantity
+      const selectedAccessory = accessories.find((accessory) => accessory.accesories_id === accessoryId);
       if (selectedAccessory) {
         const accessoryPrice = parseFloat(selectedAccessory.price);
         const prevQuantity = selectedAccessory.quantity || 0;
-
+  
         setPriceEstimate((prevPriceEstimate) => {
           const prevTotalPrice = prevQuantity * accessoryPrice;
           const newTotalPrice = quantity * accessoryPrice;
-
+  
           return prevPriceEstimate - prevTotalPrice + newTotalPrice;
         });
-
-        setAccessories((prevAccessories) =>
-          prevAccessories.map((accessory) =>
-            accessory.accesories_id === accessoryId
-              ? { ...accessory, quantity: quantity }
-              : accessory
-          )
-        );
       }
     }
   };
+  
 
   const [selectedStartTime, setSelectedStartTime] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -180,32 +212,54 @@ export default function EmailForm() {
   const createAppointment = async (e) => {
     e.preventDefault();
     setIsSubmitPressed(true);
-
+  
     try {
-      //INPUTS PRICEESTIMATE DURING FINAL ASSESMENT
+      // INPUTS PRICEESTIMATE DURING FINAL ASSESSMENT
       const updatedAppointmentFormData = {
         ...appointmentFormData,
         priceEstimate: priceEstimate,
+        selectedAccessories: appointmentFormData.selectedAccessories.map(
+          (accessoryId) => {
+            const accessory = accessories.find(
+              (accessory) => accessory.accesories_id === accessoryId
+            );
+  
+            // Null check for accessory object
+            if (accessory && accessory.isPerEach) {
+              return {
+                accessoryId: accessoryId,
+                quantity: accessory.quantity || 0,
+              };
+            } else {
+              return {
+                accessoryId: accessoryId,
+              };
+            }
+          }
+        ),
       };
-
-      //INCLUDE THE selectedAccessories in the updatedAppointmentFormData
-      updatedAppointmentFormData.selectedAccessories = appointmentFormData.selectedAccessories;
-      //INSERTS DATA INTO APPOINTMENTS DATABASE
+  
+      // INCLUDE THE selectedAccessories in the updatedAppointmentFormData
+      updatedAppointmentFormData.selectedAccessories =
+        appointmentFormData.selectedAccessories;
+  
+      // INSERTS DATA INTO APPOINTMENTS DATABASE
       const { data, error } = await supabase
         .from("appointments")
         .insert([updatedAppointmentFormData]);
-
+  
       if (error) {
         throw error;
       } else {
         console.log("Form Submission Successful.", data);
-        window.location.reload(); //RELOADS THE PAGE ON SUBMIT AND SENDS USER TO THE TOP OF THE PAGE
+        window.location.reload(); // RELOADS THE PAGE ON SUBMIT AND SENDS USER TO THE TOP OF THE PAGE
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } catch (err) {
       console.log("Error occurred during form submission", err);
     }
   };
+  
 
   return (
     <div className="d-flex justify-content-center align-items-center">
@@ -218,9 +272,7 @@ export default function EmailForm() {
         >
           Schedule an Appointment
         </h2>
-        <h4>
-          Base fee of $60
-        </h4>
+        <h4>Base fee of $60</h4>
         <form className="container mt-5">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">

@@ -80,7 +80,7 @@ function EditPage() {
               <h4>Selected Accessories:</h4>
               <ul>
                 {accessories.map((accessory) => (
-                  <li key={accessory.accessoryId}>{accessory.name}</li>
+                  <li key={accessory.accessoryId}>{accessory.name} - Quantity: {accessory.quantity}</li>
                 ))}
               </ul>
             </div>
