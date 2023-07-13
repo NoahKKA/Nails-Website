@@ -248,7 +248,7 @@ function EditPage() {
                     Save Changes
                 </button>
             </div>
-            <div className="py-20 bg-green-100"> </div>
+            <div className="py-10 bg-green-100"> </div>
         </Default>
     );
 }

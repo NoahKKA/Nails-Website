@@ -9,8 +9,9 @@ export default function HomePage() {
         <Default className="bg-green-100">
             <div className="bg-green-100">
                 <body className="bg-green-100">
+                    <MidImgLogo className="bg-green-100" />
                     <div className="max-w-7xl mx-auto">
-                        <MidImgLogo className="bg-green-100" />
+                        
                         <InfoCards  className="bg-green-100"/>
                         <Products  className="bg-green-100"/>
                     </div>
