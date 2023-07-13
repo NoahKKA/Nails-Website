@@ -5,14 +5,15 @@ import cPro3 from "../assets/images/IMG_5.png";
 
 function Products() {
     return (
-        <Carousel className=" py-10">
-            <Carousel.Item interval={2000} >
-                <img 
-                className="d-block max-h-[100%] max-w-[100%]" 
-                src={cPro1} 
-                alt="First slide" /> 
+        <Carousel className=" py-20 bg-green-100">
+            <Carousel.Item interval={2000}>
+                <img
+                    className="d-block max-h-[100%] max-w-[100%]"
+                    src={cPro1}
+                    alt="First slide"
+                />
             </Carousel.Item>
-            <Carousel.Item interval={2000} >
+            <Carousel.Item interval={2000}>
                 <img
                     className="d-block max-h-[100%] max-w-[100%]"
                     src={cPro2}
@@ -20,9 +21,11 @@ function Products() {
                 />
             </Carousel.Item>
             <Carousel.Item interval={2000}>
-                <img className="d-block max-h-[100%] max-w-[100%]" 
-                src={cPro3} 
-                alt="Third slide" />
+                <img
+                    className="d-block max-h-[100%] max-w-[100%]"
+                    src={cPro3}
+                    alt="Third slide"
+                />
             </Carousel.Item>
         </Carousel>
     );
