@@ -1,5 +1,6 @@
-import TopBar from "../componets/TopBar.jsx";
-import Footer from "../componets/Footer.jsx";
+import TopBar from "../componets/TopBar";
+import Footer from "../componets/Footer";
+import React from "react";
 
 const Default = (props) => {
     return (

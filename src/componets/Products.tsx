@@ -2,6 +2,7 @@ import Carousel from "react-bootstrap/Carousel";
 import cPro1 from "../assets/images/img.png";
 import cPro2 from "../assets/images/Untitled-7.png";
 import cPro3 from "../assets/images/IMG_5.png";
+import React from "react";
 
 function Products() {
     return (

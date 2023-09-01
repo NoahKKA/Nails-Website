@@ -3,6 +3,7 @@ import Gel from "../assets/images/GelNail.jpg";
 import Chr from "../assets/images/CharmNails.jpg";
 import Chrome from "../assets/images/chrome nails.jpg";
 import Button from "react-bootstrap/Button";
+import React from "react";
 
 function InfoCards() {
     return (
@@ -11,8 +12,8 @@ function InfoCards() {
                 <h1>What we do</h1>
             </div>
 
-            <div class="row mb-20">
-                <div class="imgAbt col-md-4" className="mx-auto">
+            <div className="row mb-20">
+                <div className="imgAbt col-md-4 mx-auto">
                     <img
                         width="500"
                         height="500"
@@ -20,7 +21,7 @@ function InfoCards() {
                         className="rounded-full mx-auto mb-10"
                     />
                 </div>
-                <div class="col-md-8 row" className="text-center">
+                <div className="col-md-8 row text-center">
                     <h4 className="mb-10">Charms nails</h4>
                     <p>
                         Charm Nails is a renowned nail salon that has redefined
@@ -45,8 +46,8 @@ function InfoCards() {
                 </div>
             </div>
 
-            <div class="row mb-20">
-                <div class="imgAbt col-md-4" className="mx-auto">
+            <div className="row mb-20">
+                <div className="imgAbt col-md-4 mx-auto">
                     <img
                         width="500"
                         height="500"
@@ -54,7 +55,7 @@ function InfoCards() {
                         className="rounded-full mx-auto mb-10"
                     />
                 </div>
-                <div class="col-md-8 row" className="text-center">
+                <div className="col-md-8 row text-center">
                     <h4 className="mb-10">Gel nails</h4>
                     <p>
                         Gel nails are a popular type of artificial nails that
@@ -79,8 +80,8 @@ function InfoCards() {
                 </div>
             </div>
 
-            <div class="row mb-20">
-                <div class="imgAbt col-md-4" className="mx-auto">
+            <div className="row mb-20">
+                <div className="imgAbt col-md-4 mx-auto">
                     <img
                         width="500"
                         height="500"
@@ -88,7 +89,7 @@ function InfoCards() {
                         className="rounded-full mx-auto mb-10"
                     />
                 </div>
-                <div class="col-md-8 row" className="text-center">
+                <div className="col-md-8 row text-center">
                     <h4 className="mb-10">Chrome nails</h4>
                     <p>
                         Gel nails are a popular type of artificial nails that

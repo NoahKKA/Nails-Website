@@ -2,6 +2,7 @@ import Default from "./DefaultPage";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../SupaBaseClient";
+import React from "react";
 
 //Makes timeblocks starting from 8am to 6pm in HH:MM
 const timeBlocks = [];

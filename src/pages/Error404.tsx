@@ -1,6 +1,7 @@
 import Nail404 from "../assets/images/nail-404-image.jpg"
 import "../App.css"
 import Default from "./DefaultPage"
+import React from "react";
 
 function Error404Page() {
   return (

@@ -1,4 +1,5 @@
 //Imports
+import React from "react";
 import BgImg from "../assets/images/logoImg.png";
 
 //Function

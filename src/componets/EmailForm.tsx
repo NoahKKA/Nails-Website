@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../SupaBaseClient";
+import { PostgrestSingleResponse } from "@supabase/supabase-js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "react-bootstrap/Button";
+import React from "react";
 
 //Makes timeblocks starting from 8am to 6pm in HH:MM
-const timeBlocks = [];
-const startTime = new Date("1970/01/01 08:00").getTime();
-const endTime = new Date("1970/01/01 18:00").getTime();
-const hourMilliseconds = 60 * 30 * 1000;
+const timeBlocks: {label: string, value: string}[] = [];
+const startTime: number = new Date("1970/01/01 08:00").getTime();
+const endTime: number = new Date("1970/01/01 18:00").getTime();
+const hourMilliseconds: number = 60 * 30 * 1000;
 
 for (
     let timestamp = startTime;
@@ -21,8 +23,26 @@ for (
     });
     timeBlocks.push({ label: time, value: time });
 }
+
+interface Accessory{
+    accesories_id: number | null,
+    price: string | null,
+    quantity: number | null,
+    selectedAccessories: any[];
+}
+
+interface AppointmentFormData {
+    name: string | null;
+    date: string | null;
+    startTime: string | null;
+    endTime: string | null;
+    priceEstimate: number | null;
+    selectedAccessories: any[];
+}
+
+
 export default function EmailForm() {
-    const [accessories, setAccessories] = useState([]);
+    const [accessories, setAccessories] = useState<Accessory[]>([]);
     const [priceEstimate, setPriceEstimate] = useState(60);
     const [selectedDate, setSelectedDate] = useState(null);
     const [isSubmitPressed, setIsSubmitPressed] = useState(false);
@@ -30,7 +50,7 @@ export default function EmailForm() {
     //FETCHES DATA FROM ACCESSORIES TABLE
     const fetchAccessoryData = async () => {
         try {
-            const { data, error } = await supabase
+            const { data, error }: PostgrestSingleResponse<Accessory[]> = await supabase
                 .from("accesories")
                 .select("*");
             if (error) {
@@ -50,11 +70,11 @@ export default function EmailForm() {
         fetchAccessoryData();
     }, []);
 
-    const handleAccessoryChange = (e, accessoryId) => {
+    const handleAccessoryChange = (e: any, accessoryId: number) => {
         const isChecked = e.target.checked;
 
         // FIND THE ACCESSORY MACTCHING THE ID THAT WAS CLICKED
-        const selectedAccessory = accessories.find(
+        const selectedAccessory: any = accessories.find(
             (accessory) => accessory.accesories_id === accessoryId
         );
 
@@ -83,6 +103,10 @@ export default function EmailForm() {
 
                 return {
                     ...prevFormData,
+                    name: prevFormData.name || "", // Ensure a non-null string
+                    date: prevFormData.date || "", // Ensure a non-null string
+                    startTime: prevFormData.startTime || "", // Ensure a non-null string
+                    endTime: prevFormData.endTime || "", // Ensure a non-null string
                     selectedAccessories: updatedAccessories,
                 };
             });
@@ -106,7 +130,7 @@ export default function EmailForm() {
         }
     };
 
-    const handleQuantityChange = (e, accessoryId) => {
+    const handleQuantityChange = (e: any, accessoryId: number) => {
         const quantity =
             e.target.value.trim() === "" ? 0 : parseInt(e.target.value); //SETS QUANTITY TO A INT
 
@@ -172,7 +196,7 @@ export default function EmailForm() {
     };
 
     //CREATES APPOINTMENT VARIABLES
-    const [appointmentFormData, setAppointmentFormData] = useState({
+    const [appointmentFormData, setAppointmentFormData] = useState<AppointmentFormData>({
         name: null,
         date: null,
         startTime: null,
@@ -245,7 +269,7 @@ export default function EmailForm() {
                             onChange={(
                                 e //SETS APPOINTMENTFORMDATA NAME TO INPUTED NAME
                             ) =>
-                                setAppointmentFormData((prevFormData) => ({
+                                setAppointmentFormData((prevFormData: any) => ({
                                     ...prevFormData,
                                     name: e.target.value,
                                 }))

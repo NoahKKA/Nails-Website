@@ -3,6 +3,7 @@ import MidImgLogo from "../componets/logoWithBg";
 import InfoCards from "../componets/InfoCards";
 import Products from "../componets/Products";
 import "../App.css"
+import React from "react";
 
 export default function HomePage() {
     return (

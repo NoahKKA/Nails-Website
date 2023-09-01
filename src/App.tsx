@@ -5,6 +5,7 @@ import CalendarPage from "./pages/CalanderPage";
 import Error404Page from "./pages/Error404";
 import EditPage from "./pages/EditPage";
 import ContactPage from "./pages/ContactPage";
+import React from "react";
 
 function App() {
     return (

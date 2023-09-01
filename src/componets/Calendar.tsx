@@ -8,7 +8,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { supabase } from "../SupaBaseClient";
 
-const locales = {
+const locales: any = {
     "en-US": require("date-fns/locale/en-US"),
 };
 const localizer = dateFnsLocalizer({
@@ -35,7 +35,7 @@ function Cal1() {
                 throw error;
             }
 
-            const transformedAppointments = data.map((appointment) => {
+            const transformedAppointments: any = data.map((appointment) => {
                 return {
                     title: appointment.name + " Nail's Appointment",
                     start: new Date(
@@ -52,7 +52,7 @@ function Cal1() {
         }
     }
 
-    const handleEventClick = (e) => {
+    const handleEventClick = (e: any) => {
         console.log(e);
         const { id } = e;
         const url = `/appointments/${id}`;
